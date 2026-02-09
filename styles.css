@@ -1,0 +1,9 @@
+:root{--bg:#0c0f14;--card:#141a22;--text:#e8eef7;--muted:#99a8bd;--line:#273243;--accent:#53b2ff}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:980px;margin:0 auto;padding:24px}
+h1{margin:.2rem 0} .tag{color:var(--muted);margin:.2rem 0 1rem}
+nav a{color:var(--accent);margin-right:14px;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h2{margin-top:0} ul{padding-left:20px}
+.footer{color:var(--muted);font-size:.9rem}
