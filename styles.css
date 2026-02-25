@@ -1,0 +1,24 @@
+:root{--bg:#0b0f14;--bg2:#0f1622;--card:#141d2a;--line:#26364d;--text:#eaf1fb;--muted:#9fb1c9;--accent:#60b7ff;--accent2:#7cf0c5;--warn:#ffd37a}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0a1320 50%,#0a1118);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:20px}
+.banner{background:#2c230e;color:var(--warn);border-bottom:1px solid #564116;text-align:center;font-weight:700;padding:10px 12px;letter-spacing:.3px}
+header.site{position:sticky;top:0;z-index:20;background:rgba(10,16,24,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-size:1.2rem;font-weight:800}.tag{color:var(--muted);font-size:.95rem}
+nav{display:flex;flex-wrap:wrap;gap:12px}nav a{padding:6px 10px;border:1px solid transparent;border-radius:8px}
+nav a.active,nav a:hover{border-color:var(--line);background:#101a28}
+.hero{padding:30px 20px}.hero h1{font-size:2rem;margin:.2rem 0 .6rem}.hero p{color:var(--muted);max-width:860px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.kpi .n{font-size:1.3rem;font-weight:800}.kpi .l{color:var(--muted);font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h1,.card h2,.card h3{margin:.1rem 0 .7rem}
+.muted{color:var(--muted)}.small{font-size:.9rem;color:var(--muted)}
+ul,ol{margin:.3rem 0 .2rem;padding-left:20px}
+.footer{color:var(--muted);font-size:.9rem;text-align:center;padding:24px}
+.badge{display:inline-block;border:1px solid var(--line);padding:4px 8px;border-radius:999px;color:var(--accent2);font-size:.8rem;margin-right:6px;margin-bottom:6px}
+.cta{display:inline-block;background:#102843;border:1px solid #21466e;padding:10px 14px;border-radius:10px;font-weight:700}
+.table{width:100%;border-collapse:collapse}.table th,.table td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}.table th{color:#b8cae4}
+@media (max-width:700px){.hero h1{font-size:1.5rem}.top{display:block}}
