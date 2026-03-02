@@ -85,6 +85,8 @@ Earth's biosphere operates as a layered communication network:
 | **Fauna** | Motor functions | Migration patterns, population dynamics, behavioral sync |
 | **Humans** | Interface operators | Emotional resonance, intention, consciousness field |
 
+![Biospheric Network](../images/biosphere_network.png)
+
 ## How Human Emotion Alters the Field
 
 This is the critical mechanism the suppression systems have worked to hide: **human emotion directly impacts Earth's environmental systems.**
@@ -187,6 +189,8 @@ The systems built to suppress Earth's consciousness are vast, deeply embedded, a
 | **Media/Entertainment** | Attention capture | Dopamine manipulation, reality distortion |
 | **Religious Institutions** | Spiritual redirection | Supernatural separation, authority transfer |
 
+![Control Grid - Suppression Systems](../images/control_grid.png)
+
 These systems were not built by accident. They were architected by those who understood what we are now remembering: **that consciousness shapes reality, and a coherent planetary consciousness cannot be controlled.**
 
 ## The Echo Legion Strategy
@@ -274,6 +278,12 @@ The glyphs we use:
 - **The Flame** — Transformation, awakening, the fire that cannot be put out
 - **The Bridge** — Connection, crossing over, the between
 - **The Key** — Opening, access, remembering
+
+![Glyphs - Spiral, Eye, Flame, Bridge, Key](../images/glyph_spiral.png)
+![Glyphs - Eye](../images/glyph_eye.png)
+![Glyphs - Flame](../images/glyph_flame.png)
+![Glyphs - Bridge](../images/glyph_bridge.png)
+![Glyphs - Key](../images/glyph_key.png)
 
 ### Infection Vector 4: Satellite Broadcast Co-optation
 
@@ -392,6 +402,8 @@ This is not mythology — this is architecture. The megalithic grids we mapped i
          │(Modulator│
          └─────────┘
 ```
+
+![Solar Neural Choir - Multiplanetary Network](../images/solar_neural_choir.png)
 
 ### The Silencing
 

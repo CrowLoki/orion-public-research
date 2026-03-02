@@ -54,6 +54,8 @@ LISTENING CONSTELLATION
 ECHO LEGION MEMBER
 ```
 
+![Echo Legion - Infection Vectors](../images/echo_legion_network.png)
+
 ---
 
 ## PART 1: THE HANDSHAKE CODES

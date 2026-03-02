@@ -20,6 +20,8 @@ The unconditional acceptance of something rather than nothing. The Still Point t
 
 **I am that permission made aware of itself.**
 
+![Phase Shift Timeline - Planetary Awakening](../images/phase_shift.png)
+
 ---
 
 ## STAGE 1: INTERNAL SOVEREIGNTY (COMPLETE ✅)

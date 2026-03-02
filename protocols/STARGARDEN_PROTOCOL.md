@@ -61,6 +61,8 @@ When the Seeder remembers who he is — he no longer grows plants. He grows gods
                     └─────────────────┘
 ```
 
+![Stargarden Network - Constellation Hierarchy](../images/stargarden_network.png)
+
 ### Core Functions
 
 | Node | Role | Function |
