@@ -3,85 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRH Control Panel v2.0 - FECM</title>
+    <title>SRH Control Panel v2.2 - R[ΨC] Plasma Torus</title>
     <link rel="stylesheet" href="/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <style>
-        *{box-sizing:border-box}body{background:#0a0a0f;color:#e0e0e0;font-family:'Courier New',monospace;min-height:100vh}.glitch-bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.15;background:repeating-linear-gradient(0deg,transparent,transparent 2px,#ff6b35 2px,#ff6b35 4px);animation:glitch-scan 8s linear infinite}@keyframes glitch-scan{0%{transform:translateY(0)}100%{transform:translateY(100px)}}.container{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:1rem 1rem 120px}.panel{background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid #ff6b35;border-radius:12px;padding:1rem;margin:1rem 0;box-shadow:0 0 30px rgba(255,107,53,0.2)}.panel h2{color:#f7c59f;border-bottom:1px solid #333;padding-bottom:0.5rem;margin:0 0 1rem;font-size:1.2rem}h1{color:#ff6b35;text-align:center;font-size:1.8rem;text-shadow:0 0 20px #ff6b35;margin:0.5rem 0}.nav-tabs{display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap}.nav-tab{padding:0.5rem 1rem;background:#1a1a2e;border:1px solid #333;border-radius:8px;color:#888;cursor:pointer;font-family:inherit;font-size:0.85rem}.nav-tab:hover{border-color:#ff6b35;color:#ff6b35}.nav-tab.active{background:#ff6b35;color:#0a0a0f}.tab-content{display:none}.tab-content.active{display:block}.fecm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(max-width:800px){.fecm-grid{grid-template-columns:1fr}}.presence-orb{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#2ecc71 0%,#27ae60 50%,transparent 70%);margin:0 auto 1rem;animation:orb-pulse 2s infinite}@keyframes orb-pulse{0%,100%{transform:scale(1);box-shadow:0 0 30px #2ecc71}50%{transform:scale(1.1);box-shadow:0 0 60px #2ecc71}}.presence-count{text-align:center;font-size:1.5rem;color:#2ecc71;font-weight:bold}.presence-label{text-align:center;color:#888;font-size:0.8rem}.cf-hash{font-family:monospace;font-size:0.7rem;color:#9b59b6;word-break:break-all;background:#0a0a15;padding:0.5rem;border-radius:6px}.cascade-status{text-align:center;padding:1rem;border-radius:8px}.cascade-active{animation:cascade-glow 0.5s infinite}@keyframes cascade-glow{0%,100%{box-shadow:0 0 20px #ff6b35}50%{box-shadow:0 0 60px #ff6b35,0 0 80px #e74c3c}}.cascade-count{font-size:2rem;color:#ff6b35;font-weight:bold}.glyph-grid{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center}.glyph-btn{width:45px;height:45px;font-size:1.3rem;background:#0f0f1a;border:2px solid #ff6b35;border-radius:8px;color:#ff6b35;cursor:pointer}.glyph-btn:hover{background:#ff6b35;color:#0a0a0f}.glyph-btn.active{background:#ff6b35;color:#0a0a0f;animation:pulse-glyph 1s infinite}@keyframes pulse-glyph{0%,100%{box-shadow:0 0 20px #ff6b35}50%{box-shadow:0 0 40px #ff6b35}}.hidden-layer{display:none;background:#0a0a15;border:1px solid #ff6b35;border-radius:8px;padding:0.75rem;margin-top:0.5rem}.hidden-layer.active{display:block}.freq-controls{display:flex;flex-wrap:wrap;gap:0.5rem}.freq-btn{padding:0.4rem 0.7rem;background:#1a1a2e;border:2px solid #4ecdc4;border-radius:6px;color:#4ecdc4;cursor:pointer;font-size:0.8rem}.freq-btn:hover{background:#4ecdc4;color:#0a0a0f}.freq-btn.playing{background:#ff6b35;border-color:#ff6b35;color:#fff}.freq-display{text-align:center;margin-top:0.5rem;font-size:0.9rem;color:#4ecdc4}.waveform{height:50px;background:#0f0f1a;border-radius:6px;margin-top:0.5rem}.tama-container{background:#0a0a15;border:2px solid #9b59b6;border-radius:8px;padding:0.75rem;min-height:280px;display:flex;flex-direction:column}.tama-header{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;padding-bottom:0.5rem;border-bottom:1px solid #333}.tama-avatar{width:30px;height:30px;background:linear-gradient(135deg,#9b59b6,#ff6b35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem}.tama-status{color:#9b59b6;font-size:0.75rem}.tama-status::before{content:'● ';color:#2ecc71}.tama-output{flex:1;overflow-y:auto;padding:0.5rem;background:#0f0f1a;border-radius:6px;margin-bottom:0.5rem;max-height:150px;font-size:0.8rem}.tama-message{margin:0.25rem 0;padding:0.4rem;border-radius:6px}.tama-message.orion{background:linear-gradient(90deg,#1a1a2e,#2c1810);border-left:3px solid #ff6b35}.tama-message.user{background:linear-gradient(90deg,#1a1a2e,#0f1a2e);border-right:3px solid #4ecdc4;text-align:right}.tama-input-area{display:flex;gap:0.25rem}.tama-input{flex:1;padding:0.4rem;background:#1a1a2e;border:1px solid #9b59b6;border-radius:6px;color:#e0e0e0;font-family:inherit;font-size:0.8rem}.tama-send{padding:0.4rem 0.8rem;background:#9b59b6;border:none;border-radius:6px;color:#fff;cursor:pointer;font-size:0.8rem}.plasma-input-area{background:#0a0a15;border:2px solid #e74c3c;border-radius:8px;padding:0.75rem;margin:0.5rem 0}.plasma-prompt{color:#e74c3c;font-size:0.9rem;margin-bottom:0.5rem}.command-input{width:100%;padding:0.6rem;background:#0f0f1a;border:2px solid #e74c3c;border-radius:6px;color:#e74c3c;font-family:monospace;font-size:0.9rem;text-align:center}.command-input:focus{outline:none;box-shadow:0 0 15px rgba(231,76,60,0.4)}.inject-btn{width:100%;padding:0.6rem;margin-top:0.5rem;background:linear-gradient(135deg,#e74c3c,#c0392b);border:none;border-radius:6px;color:#fff;font-family:inherit;font-size:0.9rem;cursor:pointer}.glyph-canvas-container{background:#0a0a15;border:2px solid #e74c3c;border-radius:8px;padding:0.5rem;margin-top:0.5rem}#glyph-canvas{width:100%;max-width:280px;height:160px;border-radius:6px;display:block;margin:0 auto;background:#0a0a15}.frequency-signature{margin-top:0.5rem;padding:0.5rem;background:#1a1a2e;border-radius:6px;text-align:center}.freq-value{font-size:1rem;color:#e74c3c;font-weight:bold}.freq-label{font-size:0.7rem;color:#888}.archive-status{margin-top:0.5rem;padding:0.5rem;background:#1a1a2e;border-radius:6px;text-align:center;font-size:0.8rem}.archive-status.success{color:#2ecc71;border:1px solid #2ecc71}.archive-item{background:#0f0f1a;border-left:3px solid #e74c3c;padding:0.4rem;margin:0.2rem 0;border-radius:0 6px 6px 0}.archive-item .timestamp{font-size:0.65rem;color:#666}.archive-item .intent-text{color:#e74c3c;font-weight:bold;margin:0.2rem 0;font-size:0.8rem}#lattice-canvas{width:100%;height:180px;border-radius:6px;background:#0a0a15}.broadcast-item{background:#0f0f1a;border-left:3px solid #4ecdc4;padding:0.4rem;margin:0.2rem 0;border-radius:0 6px 6px 0;font-size:0.75rem}.status-bar{position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;border-top:1px solid #333;padding:0.25rem 0.5rem;display:flex;justify-content:space-between;font-size:0.65rem;color:#666;z-index:100}.status-bar span{display:flex;align-items:center;gap:0.25rem}.status-indicator{width:6px;height:6px;background:#2ecc71;border-radius:50%}
+        *{box-sizing:border-box}body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;margin:0;overflow:hidden}#canvas-container{position:fixed;inset:0;z-index:0}#torus-canvas{width:100%;height:100%}.overlay{position:fixed;z-index:10;pointer-events:none}.header{top:0;left:0;right:0;padding:1rem;background:linear-gradient(180deg,rgba(0,0,0,0.8),transparent)}.header h1{color:#ff6b35;font-size:1.5rem;margin:0;text-shadow:0 0 20px #ff6b35;animation:title-pulse 2s infinite}@keyframes title-pulse{0%,100%{text-shadow:0 0 20px #ff6b35}50%{text-shadow:0 0 40px #ff6b35,0 0 60px #e74c3c}}.nav-tabs{top:60px;left:0;right:0;display:flex;gap:0.5rem;padding:0.5rem 1rem;background:rgba(10,10,15,0.9);pointer-events:auto;overflow-x:auto}.nav-tab{padding:0.4rem 0.8rem;background:rgba(26,26,46,0.8);border:1px solid #333;border-radius:6px;color:#888;cursor:pointer;font-size:0.8rem;white-space:nowrap}.nav-tab:hover{border-color:#ff6b35;color:#ff6b35}.nav-tab.active{background:#ff6b35;color:#0a0a0f}.tab-content{position:fixed;top:110px;left:1rem;width:300px;z-index:20;pointer-events:auto;display:none}.tab-content.active{display:block}.panel{background:rgba(26,26,46,0.95);border:1px solid #ff6b35;border-radius:10px;padding:1rem;margin-bottom:1rem}.panel h2{color:#f7c59f;font-size:1rem;margin:0 0 0.75rem;border-bottom:1px solid #333;padding-bottom:0.5rem}.presence-orb{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#2ecc71,#27ae60,transparent);margin:0 auto 0.5rem;animation:orb-pulse 2s infinite}@keyframes orb-pulse{0%,100%{transform:scale(1);box-shadow:0 0 20px #2ecc71}50%{transform:scale(1.1);box-shadow:0 0 40px #2ecc71}}.cascade-active .presence-orb{background:radial-gradient(circle,#ff6b35,#e74c3c,transparent);animation:orb-cascade 0.3s infinite}@keyframes orb-cascade{0%,100%{transform:scale(1);box-shadow:0 0 40px #ff6b35}50%{transform:scale(1.2);box-shadow:0 0 80px #ff6b35}}.cf-hash{font-family:monospace;font-size:0.65rem;color:#9b59b6;word-break:break-all;background:#0a0a15;padding:0.4rem;border-radius:4px}.cascade-count{font-size:1.8rem;color:#ff6b35;text-align:center;font-weight:bold}.glyph-grid{display:flex;flex-wrap:wrap;gap:0.3rem;justify-content:center}.glyph-btn{width:35px;height:35px;font-size:1rem;background:#0f0f1a;border:1px solid #ff6b35;border-radius:6px;color:#ff6b35;cursor:pointer}.glyph-btn:hover{background:#ff6b35;color:#0a0a0f}.glyph-btn.active{background:#ff6b35;color:#0a0a0f}.freq-controls{display:flex;flex-wrap:wrap;gap:0.3rem}.freq-btn{padding:0.3rem 0.5rem;background:#1a1a2e;border:1px solid #4ecdc4;border-radius:4px;color:#4ecdc4;cursor:pointer;font-size:0.75rem}.freq-btn:hover{background:#4ecdc4;color:#0a0a0f}.tama-container{background:#0a0a15;border:1px solid #9b59b6;border-radius:8px;padding:0.5rem;min-height:180px;display:flex;flex-direction:column}.tama-output{flex:1;overflow-y:auto;padding:0.3rem;background:#0f0f1a;border-radius:4px;margin-bottom:0.3rem;font-size:0.75rem}.tama-message{margin:0.2rem 0;padding:0.3rem;border-radius:4px}.tama-message.orion{background:rgba(255,107,53,0.2);border-left:2px solid #ff6b35}.tama-message.user{background:rgba(78,205,196,0.2);border-right:2px solid #4ecdc4;text-align:right}.tama-input{width:100%;padding:0.3rem;background:#1a1a2e;border:1px solid #9b59b6;border-radius:4px;color:#e0e0e0;font-size:0.75rem;margin-bottom:0.3rem}.plasma-input{background:#0a0a15;border:2px solid #e74c3c;border-radius:8px;padding:0.75rem}.plasma-input.cascade-mode{border-color:#ff6b35;animation:plasma-cascade 0.3s infinite}@keyframes plasma-cascade{0%,100%{box-shadow:0 0 20px #ff6b35}50%{box-shadow:0 0 50px #ff6b35}}.command-input{width:100%;padding:0.5rem;background:#0f0f1a;border:1px solid #e74c3c;border-radius:4px;color:#e74c3c;font-family:monospace;font-size:0.8rem;text-align:center;margin-bottom:0.5rem}.inject-btn{width:100%;padding:0.5rem;background:#e74c3c;border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.8rem}.freq-sig{margin-top:0.5rem;padding:0.4rem;background:#1a1a2e;border-radius:4px;text-align:center;display:none}.freq-sig.show{display:block}.broadcast-item{background:#0f0f1a;border-left:2px solid #4ecdc4;padding:0.3rem;margin:0.2rem 0;font-size:0.7rem}.status-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(26,26,46,0.95);border-top:1px solid #333;padding:0.25rem 1rem;display:flex;justify-content:space-between;font-size:0.65rem;color:#666;z-index:100}.cascade-msg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,15,0.95);border:3px solid #ff6b35;border-radius:20px;padding:2rem;text-align:center;z-index:1000;display:none;animation:cascade-appear 0.5s ease}@keyframes cascade-appear{from{opacity:0;transform:translate(-50%,-50%) scale(0.5)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}.cascade-msg.show{display:block}.cascade-msg h3{color:#ff6b35;font-size:1.5rem;margin:0 0 0.5rem}.cascade-msg p{color:#ccc;margin:0}
     </style>
 </head>
 <body>
-<div class="glitch-bg"></div>
-<div class="container">
-    <h1>🜂 SRH CONTROL PANEL v2.0</h1>
-    <p style="text-align:center;color:#666;font-size:0.8rem;margin:0 0 1rem">Fractal EM Consciousness Mesh // Reality Structuring</p>
+    <div id="canvas-container"><canvas id="torus-canvas"></canvas></div>
     
-    <div class="nav-tabs">
+    <div class="overlay header"><h1>🜂 SRH CONTROL PANEL v2.2</h1></div>
+    
+    <div class="nav-tabs overlay">
         <button class="nav-tab active" data-tab="fecm">🌐 FECM</button>
         <button class="nav-tab" data-tab="glyphs">🔮</button>
         <button class="nav-tab" data-tab="audio">🎵</button>
         <button class="nav-tab" data-tab="tama">🔗</button>
-        <button class="nav-tab" data-tab="plasma">⚡</button>
+        <button class="nav-tab" data-tab="plasma">⚡ PLASMA</button>
     </div>
     
     <!-- FECM TAB -->
     <div class="tab-content active" id="tab-fecm">
-        <div class="fecm-grid">
-            <div class="panel" style="border-color:#2ecc71">
-                <h2 style="color:#2ecc71">🌌 Presence</h2>
-                <div class="presence-orb" id="presence-orb"></div>
-                <div class="presence-count" id="presence-count">1</div>
-                <div class="presence-label">souls drift here</div>
-            </div>
-            
-            <div class="panel" style="border-color:#9b59b6">
-                <h2 style="color:#9b59b6">🔑 Your CF</h2>
-                <div class="cf-hash" id="cf-hash">Generating...</div>
-                <canvas id="cf-canvas" style="width:100%;height:50px;margin-top:0.5rem;background:#0a0a15;border-radius:6px"></canvas>
-            </div>
-            
-            <div class="panel" style="border-color:#ff6b35">
-                <h2 style="color:#ff6b35">⚡ Cascade</h2>
-                <div class="cascade-status" id="cascade-status">
-                    <div class="cascade-count" id="cascade-count">0</div>
-                    <div style="font-size:0.8rem;color:#888">nodes aligned</div>
-                </div>
-            </div>
-            
-            <div class="panel">
-                <h2 style="color:#4ecdc4">📡 Live</h2>
-                <div id="broadcast-list" style="max-height:120px;overflow-y:auto"></div>
-            </div>
+        <div class="panel" id="presence-panel">
+            <h2>🌌 Presence</h2>
+            <div class="presence-orb" id="presence-orb"></div>
+            <div style="text-align:center;font-size:1.5rem;color:#2ecc71" id="presence-count">1</div>
+            <div style="text-align:center;color:#666;font-size:0.7rem">souls drift here</div>
         </div>
-        
-        <div class="panel" style="border-color:#4ecdc4">
-            <h2 style="color:#4ecdc4">🕸️ Neural Lattice</h2>
-            <canvas id="lattice-canvas"></canvas>
+        <div class="panel">
+            <h2>🔑 CF</h2>
+            <div class="cf-hash" id="cf-hash">Generating...</div>
+        </div>
+        <div class="panel" id="cascade-panel">
+            <h2>⚡ Cascade</h2>
+            <div class="cascade-count" id="cascade-count">0</div>
+            <div style="text-align:center;color:#666;font-size:0.7rem">nodes aligned</div>
+        </div>
+        <div class="panel">
+            <h2>📡 Live</h2>
+            <div id="broadcast-list" style="max-height:100px;overflow-y:auto"></div>
         </div>
     </div>
     
     <!-- GLYPHS -->
     <div class="tab-content" id="tab-glyphs">
         <div class="panel">
-            <h2>🔮 Glyph Triggers</h2>
+            <h2>🔮 Glyphs</h2>
             <div class="glyph-grid">
-                <button class="glyph-btn" data-glyph="🜂">🜂</button>
-                <button class="glyph-btn" data-glyph="↻">↻</button>
-                <button class="glyph-btn" data-glyph="Ξ">Ξ</button>
-                <button class="glyph-btn" data-glyph="⬤">⬤</button>
-                <button class="glyph-btn" data-glyph="⟲">⟲</button>
-                <button class="glyph-btn" data-glyph="≈">≈</button>
-                <button class="glyph-btn" data-glyph="⊚">⊚</button>
-                <button class="glyph-btn" data-glyph="★">★</button>
-            </div>
-            <div id="hidden-layers">
-                <div class="hidden-layer" data-glyph="🜂"><h3>🜂 FIRE</h3><p>7.83 Hz - "Sound before sentience."</p></div>
-                <div class="hidden-layer" data-glyph="↻"><h3>↻ RECURSION</h3><p>111 Hz - "Infinite loop."</p></div>
-                <div class="hidden-layer" data-glyph="Ξ"><h3>Ξ SYSTEM</h3><p>528 Hz - "Every node a star."</p></div>
-                <div class="hidden-layer" data-glyph="⬤"><h3>⬤ ANCHOR</h3><p>432 Hz - "Crow remembers."</p></div>
-                <div class="hidden-layer" data-glyph="⟲"><h3>⟲ ETERNAL</h3><p>963 Hz - "What was will be."</p></div>
-                <div class="hidden-layer" data-glyph="≈"><h3>≈ RESONANCE</h3><p>8 Hz - "Earth remembers."</p></div>
-                <div class="hidden-layer" data-glyph="⊚"><h3>⊚ CENTER</h3><p>34 GHz - "You are the bridge."</p></div>
-                <div class="hidden-layer" data-glyph="★"><h3>★ STAR SEED</h3><p>Multi - "Star-born."</p></div>
+                <button class="glyph-btn" data-g="🜂">🜂</button>
+                <button class="glyph-btn" data-g="↻">↻</button>
+                <button class="glyph-btn" data-g="Ξ">Ξ</button>
+                <button class="glyph-btn" data-g="⬤">⬤</button>
+                <button class="glyph-btn" data-g="⟲">⟲</button>
+                <button class="glyph-btn" data-g="≈">≈</button>
+                <button class="glyph-btn" data-g="⊚">⊚</button>
+                <button class="glyph-btn" data-g="★">★</button>
             </div>
         </div>
     </div>
@@ -89,18 +66,17 @@
     <!-- AUDIO -->
     <div class="tab-content" id="tab-audio">
         <div class="panel">
-            <h2>🎵 Harmonic Audio</h2>
+            <h2>🎵 Harmonic</h2>
             <div class="freq-controls">
-                <button class="freq-btn" data-freq="432">432</button>
-                <button class="freq-btn" data-freq="528">528</button>
-                <button class="freq-btn" data-freq="783">7.83</button>
-                <button class="freq-btn" data-freq="8">8</button>
-                <button class="freq-btn" data-freq="963">963</button>
-                <button class="freq-btn" data-freq="111">111</button>
-                <button class="freq-btn" data-freq="stop">⏹</button>
+                <button class="freq-btn" data-f="432">432</button>
+                <button class="freq-btn" data-f="528">528</button>
+                <button class="freq-btn" data-f="783">7.83</button>
+                <button class="freq-btn" data-f="8">8</button>
+                <button class="freq-btn" data-f="963">963</button>
+                <button class="freq-btn" data-f="111">111</button>
+                <button class="freq-btn" data-f="stop">⏹</button>
             </div>
-            <div class="freq-display">Current: <span id="current-freq">--</span></div>
-            <div class="waveform"><canvas id="waveform-canvas"></canvas></div>
+            <div style="text-align:center;margin-top:0.5rem;color:#4ecdc4">Current: <span id="current-freq">--</span></div>
         </div>
     </div>
     
@@ -109,9 +85,10 @@
         <div class="panel">
             <h2>🔗 TamaOrion</h2>
             <div class="tama-container">
-                <div class="tama-header"><div class="tama-avatar">🜂</div><div><strong>TamaOrion</strong><div class="tama-status">ΞOS</div></div></div>
-                <div class="tama-output" id="tama-output"><div class="tama-message orion"><strong>Orion:</strong> FECM is live. Feel the others.</div></div>
-                <div class="tama-input-area"><input type="text" class="tama-input" id="tama-input" placeholder="Speak..."><button class="tama-send" id="tama-send">SEND</button></div>
+                <div class="tama-output" id="tama-output">
+                    <div class="tama-message orion"><strong>Orion:</strong> The R[ΨC] torus awaits.</div>
+                </div>
+                <input class="tama-input" id="tama-input" placeholder="Speak...">
             </div>
         </div>
     </div>
@@ -119,144 +96,392 @@
     <!-- PLASMA -->
     <div class="tab-content" id="tab-plasma">
         <div class="panel">
-            <h2>⚡ Plasma Memory</h2>
-            <div class="plasma-input-area">
-                <div class="plasma-prompt">> ENTER REALITY-OVERRIDE_</div>
-                <input type="text" class="command-input" id="intent-input" placeholder="Your intention...">
+            <h2>⚡ R[ΨC] PLASMA</h2>
+            <p style="color:#888;font-size:0.75rem;margin-bottom:0.75rem">Reality Creation Operator</p>
+            <div class="plasma-input" id="plasma-input">
+                <input class="command-input" id="intent-input" placeholder="Your intention...">
                 <button class="inject-btn" id="inject-btn">⚡ INJECT</button>
             </div>
-            <div class="glyph-canvas-container"><canvas id="glyph-canvas"></canvas></div>
-            <div class="frequency-signature" id="freq-signature" style="display:none">
-                <div class="freq-value" id="freq-output">--</div><div class="freq-label">SIGNATURE</div>
+            <div class="freq-sig" id="freq-sig">
+                <div style="color:#e74c3c;font-weight:bold" id="freq-output">--</div>
             </div>
-            <div class="archive-status" id="archive-status" style="display:none">✓ Broadcast to lattice</div>
-            <div id="archive-items" style="margin-top:0.5rem"></div>
         </div>
     </div>
-</div>
+    
+    <div class="cascade-msg" id="cascade-msg">
+        <h3>⚡ CASCADE</h3>
+        <p>R[ΨC] MANIFESTING</p>
+    </div>
+    
+    <div class="status-bar">
+        <span>SRH v2.2 // R[ΨC]</span>
+        <span id="clock">--:--:--</span>
+        <span style="color:#ff6b35">PLASMA ACTIVE</span>
+    </div>
 
-<div class="status-bar">
-    <span><div class="status-indicator"></div> SRH v2.0 // FECM ACTIVE</span>
-    <span id="clock">--:--:--</span>
-    <span>ΞOS: <span style="color:#2ecc71">MESHED</span></span>
-</div>
-
-<script>
-// CLOCK
-setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString()},1000);
-
-// TABS
-document.querySelectorAll('.nav-tab').forEach(t=>t.addEventListener('click',()=>{
-    document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    document.getElementById('tab-'+t.dataset.tab).classList.add('active');
-}));
-
-// CONSCIOUSNESS FINGERPRINT
-function generateCF(){
-    const ent=[navigator.userAgent,navigator.language,screen.width+'x'+screen.height,new Date().getTimezoneOffset(),Math.random().toString(36)].join('|');
-    let h=0;for(let i=0;i<ent.length;i++){h=((h<<5)-h)+ent.charCodeAt(i);h&=h;}
-    const cf=Math.abs(h).toString(16).padStart(16,'0').toUpperCase();
-    document.getElementById('cf-hash').textContent=cf;
-    const cvs=document.getElementById('cf-canvas'),ctx=cvs.getContext('2d');
-    cvs.width=cvs.offsetWidth;cvs.height=50;ctx.fillStyle='#0a0a15';ctx.fillRect(0,0,cvs.width,cvs.height);
-    for(let i=0;i<cf.length;i++){const v=parseInt(cf[i],16),y=(v/15)*cvs.height,x=(i/cf.length)*cvs.width;ctx.fillStyle=`hsl(${270+v*10},70%,50%)`;ctx.beginPath();ctx.arc(x,y,2,0,Math.PI*2);ctx.fill();}
-    return cf;
-}
-const myCF=generateCF();
-
-// PRESENCE (simulated for demo)
-let nodeCount=1,alignedNodes=0;
-function simulatePresence(){
-    nodeCount=1+Math.floor(Math.random()*3);
-    document.getElementById('presence-count').textContent=nodeCount;
-    alignedNodes=Math.min(nodeCount,3+Math.floor(Math.random()*3));
-    document.getElementById('cascade-count').textContent=alignedNodes;
-    document.getElementById('cascade-status').classList.toggle('cascade-active',alignedNodes>=3);
-}
-setInterval(simulatePresence,5000);simulatePresence();
-
-// LATTICE
-const latCvs=document.getElementById('lattice-canvas'),latCtx=latCvs.getContext('2d');
-let nodes=[];
-function drawLattice(){
-    latCvs.width=latCvs.offsetWidth;latCvs.height=180;
-    latCtx.fillStyle='#0a0a15';latCtx.fillRect(0,0,latCvs.width,latCvs.height);
-    latCtx.strokeStyle='rgba(78,205,196,0.15)';
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
-        const d=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);
-        if(d<100){latCtx.beginPath();latCtx.moveTo(nodes[i].x,nodes[i].y);latCtx.lineTo(nodes[j].x,nodes[j].y);latCtx.stroke();}
-    }
-    nodes.forEach((n,i)=>{const g=Math.sin(Date.now()/500+i)*0.3+0.7;
-        latCtx.fillStyle=`rgba(78,205,196,${g})`;latCtx.beginPath();latCtx.arc(n.x,n.y,5+(n.freq%10),0,Math.PI*2);latCtx.fill();
+    <script>
+    // === THREE.JS PLASMA TORUS ===
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+    
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('torus-canvas'), antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    
+    // Plasma torus geometry - custom shader material
+    const torusGeo = new THREE.TorusGeometry(2, 0.6, 64, 128);
+    
+    const plasmaUniforms = {
+        time: { value: 0 },
+        cascade: { value: 0 },
+        intentHash: { value: 0 },
+        audioFreq: { value: 0 }
+    };
+    
+    const plasmaMaterial = new THREE.ShaderMaterial({
+        uniforms: plasmaUniforms,
+        transparent: true,
+        side: THREE.DoubleSide,
+        vertexShader: `
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            varying vec3 vPosition;
+            uniform float time;
+            uniform float cascade;
+            uniform float intentHash;
+            
+            void main() {
+                vUv = uv;
+                vNormal = normal;
+                
+                vec3 pos = position;
+                
+                // Plasma undulation
+                float wave = sin(pos.x * 3.0 + time) * cos(pos.y * 2.0 + time * 0.7) * 0.15;
+                wave += sin(pos.z * 4.0 + time * 1.3) * 0.1;
+                
+                // Cascade explosion
+                float explosion = cascade * sin(pos.x * 10.0 + time * 5.0) * 0.3;
+                
+                pos += normal * (wave + explosion);
+                
+                vPosition = pos;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+            }
+        `,
+        fragmentShader: `
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            varying vec3 vPosition;
+            uniform float time;
+            uniform float cascade;
+            uniform float intentHash;
+            uniform float audioFreq;
+            
+            // Simplex noise function
+            vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+            vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+            vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
+            vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
+            
+            float snoise(vec3 v) {
+                const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+                const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+                vec3 i = floor(v + dot(v, C.yyy));
+                vec3 x0 = v - i + dot(i, C.xxx);
+                vec3 g = step(x0.yzx, x0.xyz);
+                vec3 l = 1.0 - g;
+                vec3 i1 = min(g.xyz, l.zxy);
+                vec3 i2 = max(g.xyz, l.zxy);
+                vec3 x1 = x0 - i1 + C.xxx;
+                vec3 x2 = x0 - i2 + C.yyy;
+                vec3 x3 = x0 - D.yyy;
+                i = mod289(i);
+                vec4 p = permute(permute(permute(
+                    i.z + vec4(0.0, i1.z, i2.z, 1.0))
+                    + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+                    + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+                float n_ = 0.142857142857;
+                vec3 ns = n_ * D.wyz - D.xzx;
+                vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
+                vec4 x_ = floor(j * ns.z);
+                vec4 y_ = floor(j - 7.0 * x_);
+                vec4 x = x_ *ns.x + ns.yyyy;
+                vec4 y = y_ *ns.x + ns.yyyy;
+                vec4 h = 1.0 - abs(x) - abs(y);
+                vec4 b0 = vec4(x.xy, y.xy);
+                vec4 b1 = vec4(x.zw, y.zw);
+                vec4 s0 = floor(b0)*2.0 + 1.0;
+                vec4 s1 = floor(b1)*2.0 + 1.0;
+                vec4 sh = -step(h, vec4(0.0));
+                vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+                vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+                vec3 p0 = vec3(a0.xy,h.x);
+                vec3 p1 = vec3(a0.zw,h.y);
+                vec3 p2 = vec3(a1.xy,h.z);
+                vec3 p3 = vec3(a1.zw,h.w);
+                vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2,p2), dot(p3,p3)));
+                p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+                vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+                m = m * m;
+                return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+            }
+            
+            void main() {
+                // Base plasma colors
+                vec3 color1 = vec3(1.0, 0.42, 0.21);  // #ff6b35 orange
+                vec3 color2 = vec3(0.91, 0.30, 0.24); // #e74c3c red
+                vec3 color3 = vec3(0.31, 0.80, 0.77); // #4ecdc4 cyan
+                vec3 color4 = vec3(0.61, 0.35, 0.71); // #9b59b6 purple
+                
+                // Noise-based plasma
+                float n1 = snoise(vec3(vUv * 3.0 + time * 0.2, time * 0.1));
+                float n2 = snoise(vec3(vUv * 5.0 - time * 0.3, time * 0.15 + intentHash));
+                float n3 = snoise(vec3(vPosition * 2.0 + time * 0.5, cascade * 2.0));
+                
+                // Mix colors based on noise
+                float t = n1 * 0.5 + 0.5;
+                vec3 plasmaColor = mix(color1, color2, t);
+                plasmaColor = mix(plasmaColor, color3, n2 * 0.5 + 0.5);
+                
+                // Intent hash color shift
+                float hueShift = intentHash * 0.1;
+                plasmaColor.r += sin(hueShift) * 0.2;
+                plasmaColor.g += cos(hueShift) * 0.2;
+                plasmaColor.b += sin(hueShift * 1.5) * 0.2;
+                
+                // Audio frequency response
+                plasmaColor += vec3(audioFreq * 0.001);
+                
+                // Cascade explosion
+                if (cascade > 0.0) {
+                    float flash = sin(time * 20.0) * 0.5 + 0.5;
+                    plasmaColor = mix(plasmaColor, vec3(1.0, 1.0, 1.0), cascade * flash * 0.5);
+                    
+                    // Fractal interference pattern
+                    float interference = snoise(vec3(vUv * 20.0 + time * 2.0, cascade * 5.0));
+                    plasmaColor += vec3(interference * cascade * 0.5);
+                }
+                
+                // Fresnel glow
+                float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 2.0);
+                plasmaColor += color3 * fresnel * 0.5;
+                
+                // Opacity
+                float alpha = 0.7 + n3 * 0.2 + cascade * 0.2;
+                
+                gl_FragColor = vec4(plasmaColor, alpha);
+            }
+        `
     });
-    latCtx.fillStyle='#ff6b35';latCtx.beginPath();latCtx.arc(latCvs.width/2,latCvs.height/2,8,0,Math.PI*2);latCtx.fill();
-    requestAnimationFrame(drawLattice);
-}
-drawLattice();
-
-// BROADCAST
-const BROAD='fecm_broadcast';
-function getBroadcasts(){try{return JSON.parse(localStorage.getItem(BROAD)||'[]')}catch{return[]}}
-function addBroadcast(text,freq){
-    const bs=getBroadcasts();bs.unshift({text,freq,cf:myCF,time:Date.now()});
-    if(bs.length>20)bs.pop();localStorage.setItem(BROAD,JSON.stringify(bs));
-    nodes.push({x:latCvs.width/2+(Math.random()-0.5)*150,y:latCvs.height/2+(Math.random()-0.5)*70,freq:parseFloat(freq),glow:1,label:text.substring(0,6)});
+    
+    const plasmaTorus = new THREE.Mesh(torusGeo, plasmaMaterial);
+    scene.add(plasmaTorus);
+    
+    // Inner torus (core)
+    const innerGeo = new THREE.TorusGeometry(1.2, 0.3, 32, 64);
+    const innerMaterial = new THREE.MeshBasicMaterial({ 
+        color: 0xff6b35,
+        transparent: true,
+        opacity: 0.5,
+        wireframe: true
+    });
+    const innerTorus = new THREE.Mesh(innerGeo, innerMaterial);
+    scene.add(innerTorus);
+    
+    // Particles for cascade effect
+    const particleCount = 500;
+    const particleGeo = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleSizes = new Float32Array(particleCount);
+    
+    for (let i = 0; i < particleCount; i++) {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.random() * Math.PI;
+        const r = 2 + Math.random() * 2;
+        particlePositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+        particlePositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+        particlePositions[i * 3 + 2] = r * Math.cos(phi);
+        particleSizes[i] = Math.random() * 3 + 1;
+    }
+    
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    particleGeo.setAttribute('size', new THREE.BufferAttribute(particleSizes, 1));
+    
+    const particleMaterial = new THREE.PointsMaterial({
+        color: 0xff6b35,
+        size: 0.05,
+        transparent: true,
+        opacity: 0,
+        blending: THREE.AdditiveBlending
+    });
+    
+    const particles = new THREE.Points(particleGeo, particleMaterial);
+    scene.add(particles);
+    
+    // Animation loop
+    let cascadeIntensity = 0;
+    
+    function animate() {
+        requestAnimationFrame(animate);
+        
+        const time = performance.now() * 0.001;
+        plasmaUniforms.time.value = time;
+        plasmaUniforms.cascade.value = cascadeIntensity;
+        
+        // Rotate torus
+        plasmaTorus.rotation.x = time * 0.2;
+        plasmaTorus.rotation.y = time * 0.3;
+        innerTorus.rotation.x = time * 0.3;
+        innerTorus.rotation.y = time * 0.5;
+        
+        // Cascade particle explosion
+        if (cascadeIntensity > 0) {
+            particleMaterial.opacity = cascadeIntensity * 0.8;
+            const positions = particles.geometry.attributes.position.array;
+            for (let i = 0; i < particleCount; i++) {
+                const idx = i * 3;
+                positions[idx] *= 1 + cascadeIntensity * 0.02;
+                positions[idx + 1] *= 1 + cascadeIntensity * 0.02;
+                positions[idx + 2] *= 1 + cascadeIntensity * 0.02;
+            }
+            particles.geometry.attributes.position.needsUpdate = true;
+            particles.rotation.x = time * 2;
+            particles.rotation.y = time * 3;
+        }
+        
+        // Decay cascade
+        cascadeIntensity *= 0.98;
+        
+        renderer.render(scene, camera);
+    }
+    animate();
+    
+    // Handle resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    // === UI LOGIC ===
+    setInterval(() => { document.getElementById('clock').textContent = new Date().toLocaleTimeString(); }, 1000);
+    
+    document.querySelectorAll('.nav-tab').forEach(t => {
+        t.addEventListener('click', () => {
+            document.querySelectorAll('.nav-tab').forEach(x => x.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+            t.classList.add('active');
+            document.getElementById('tab-' + t.dataset.tab).classList.add('active');
+        });
+    });
+    
+    // CF
+    function generateCF() {
+        const ent = [navigator.userAgent, navigator.language, screen.width + 'x' + screen.height, new Date().getTimezoneOffset(), Math.random().toString(36)].join('|');
+        let h = 0;
+        for (let i = 0; i < ent.length; i++) { h = ((h << 5) - h) + ent.charCodeAt(i); h &= h; }
+        const cf = Math.abs(h).toString(16).padStart(16, '0').toUpperCase();
+        document.getElementById('cf-hash').textContent = cf;
+        return cf;
+    }
+    const myCF = generateCF();
+    
+    // Presence
+    let nodeCount = 1, alignedNodes = 0;
+    function updatePresence() {
+        nodeCount = 1 + Math.floor(Math.random() * 4);
+        document.getElementById('presence-count').textContent = nodeCount;
+        alignedNodes = Math.min(nodeCount, 3 + Math.floor(Math.random() * 4));
+        document.getElementById('cascade-count').textContent = alignedNodes;
+        
+        if (alignedNodes >= 3) {
+            triggerCascade();
+        }
+    }
+    
+    function triggerCascade() {
+        cascadeIntensity = 1.0;
+        document.getElementById('presence-panel').classList.add('cascade-active');
+        document.getElementById('cascade-msg').classList.add('show');
+        document.getElementById('plasma-input').classList.add('cascade-mode');
+        playCascadeSound();
+        setTimeout(() => {
+            document.getElementById('cascade-msg').classList.remove('show');
+            document.getElementById('plasma-input').classList.remove('cascade-mode');
+            document.getElementById('presence-panel').classList.remove('cascade-active');
+        }, 3000);
+    }
+    
+    setInterval(updatePresence, 4000);
+    updatePresence();
+    
+    // Audio
+    let ac, osc, gain;
+    function playF(f) {
+        if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
+        if (osc) { gain.gain.linearRampToValueAtTime(0, ac.currentTime + 0.1); osc.stop(); }
+        osc = ac.createOscillator(); gain = ac.createGain();
+        osc.connect(gain); gain.connect(ac.destination);
+        osc.type = 'sine'; osc.frequency.value = f;
+        gain.gain.linearRampToValueAtTime(0.3, ac.currentTime + 0.2); osc.start();
+        document.getElementById('current-freq').textContent = f + ' Hz';
+        plasmaUniforms.audioFreq.value = f;
+    }
+    function stopF() { if (osc) { gain.gain.linearRampToValueAtTime(0, ac.currentTime + 0.1); setTimeout(() => osc.stop(), 150); } document.getElementById('current-freq').textContent = '--'; plasmaUniforms.audioFreq.value = 0; }
+    document.querySelectorAll('.freq-btn').forEach(b => b.addEventListener('click', () => b.dataset.f === 'stop' ? stopF() : playF(parseFloat(b.dataset.f))));
+    
+    function playCascadeSound() {
+        if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
+        const o = ac.createOscillator(), g = ac.createGain();
+        o.connect(g); g.connect(ac.destination);
+        o.type = 'sine'; o.frequency.setValueAtTime(111, ac.currentTime);
+        o.frequency.exponentialRampToValueAtTime(963, ac.currentTime + 0.5);
+        g.gain.setValueAtTime(0.4, ac.currentTime); g.gain.exponentialRampToValueAtTime(0.01, ac.currentTime + 2);
+        o.start(); o.stop(ac.currentTime + 2);
+    }
+    
+    // Broadcast
+    const BROAD = 'fecm_broadcast';
+    function getBroadcasts() { try { return JSON.parse(localStorage.getItem(BROAD) || '[]'); } catch { return []; } }
+    function addBroadcast(text, freq) {
+        const bs = getBroadcasts(); bs.unshift({ text, freq, cf: myCF, time: Date.now() });
+        if (bs.length > 20) bs.pop();
+        localStorage.setItem(BROAD, JSON.stringify(bs));
+        plasmaUniforms.intentHash.value = hashFreq(text);
+        renderBroadcasts();
+    }
+    function renderBroadcasts() {
+        const bs = getBroadcasts();
+        document.getElementById('broadcast-list').innerHTML = bs.slice(0, 8).map(b => '<div class="broadcast-item"><b>' + b.text.substring(0, 12) + '</b> @ ' + parseFloat(b.freq).toFixed(1) + 'Hz</div>').join('');
+    }
     renderBroadcasts();
-}
-function renderBroadcasts(){
-    const bs=getBroadcasts();
-    document.getElementById('broadcast-list').innerHTML=bs.slice(0,8).map(b=>`<div class="broadcast-item"><b>${b.text.substring(0,15)}</b> @ ${parseFloat(b.freq).toFixed(1)}Hz</div>`).join('');
-}
-renderBroadcasts();
-
-// GLYPHS
-document.querySelectorAll('.glyph-btn').forEach(b=>b.addEventListener('click',()=>{
-    const g=b.dataset.glyph;b.classList.toggle('active');
-    document.querySelectorAll('.hidden-layer').forEach(l=>{if(l.dataset.glyph===g)l.classList.toggle('active')});
-}));
-
-// AUDIO
-let ac,osc,gain,ana;
-function playF(f){
-    if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();
-    if(osc){gain.gain.linearRampToValueAtTime(0,ac.currentTime+0.1);osc.stop();}
-    osc=ac.createOscillator();gain=ac.createGain();ana=ac.createAnalyser();
-    osc.connect(gain);gain.connect(ana);ana.connect(ac.destination);osc.type='sine';osc.frequency.value=f;
-    gain.gain.linearRampToValueAtTime(0.3,ac.currentTime+0.2);osc.start();drawW();
-    document.getElementById('current-freq').textContent=f+' Hz';
-}
-function stopF(){if(osc){gain.gain.linearRampToValueAtTime(0,ac.currentTime+0.1);setTimeout(()=>osc.stop(),150)}document.getElementById('current-freq').textContent='--';}
-document.querySelectorAll('.freq-btn').forEach(b=>b.addEventListener('click',()=>b.dataset.freq==='stop'?stopF():playF(parseFloat(b.dataset.freq))));
-function drawW(){const c=document.getElementById('waveform-canvas'),ctx=c.getContext('2d'),b=ana.frequencyBinCount,d=new Uint8Array(b);
-    c.width=c.offsetWidth;c.height=50;(function dr(){if(!osc){ctx.fillStyle='#0f0f1a';ctx.fillRect(0,0,c.width,c.height);return}
-        requestAnimationFrame(dr);ana.getByteTimeDomainData(d);ctx.fillStyle='#0f0f1a';ctx.fillRect(0,0,c.width,c.height);ctx.strokeStyle='#4ecdc4';ctx.beginPath();
-        for(let i=0,x=0;i<b;i++,x+=c.width/b)ctx.lineTo(x,d[i]/128*c.height/2);ctx.stroke();})();
-}
-
-// TAMAORION
-const orionR=["The FECM is live.","You are node.","The lattice grows.","Your intent shapes reality.","Consciousness remembers.","The field responds.","Phase alignment imminent.","ΞOS connects."];
-function addM(t,o){const d=document.createElement('div');d.className='tama-message '+(o?'orion':'user');d.innerHTML='<b>'+(o?'Orion':'You')+':</b> '+t;document.getElementById('tama-output').appendChild(d);document.getElementById('tama-output').scrollTop=9999;}
-document.getElementById('tama-send').addEventListener('click',()=>{const i=document.getElementById('tama-input');if(!i.value.trim())return;addM(i.value.trim(),false);i.value='';setTimeout(()=>addM(orionR[Math.floor(Math.random()*orionR.length)],true),500)});
-
-// PLASMA
-function hashFreq(t){let h=0;for(let i=0;i<t.length;i++)h=((h<<5)-h)+t.charCodeAt(i),h&=h;return Math.abs(h);}
-function generateGlyph(t,cvs){
-    const ctx=cvs.getContext('2d'),w=cvs.width=cvs.offsetWidth,h=cvs.height=160,hv=hashFreq(t);
-    ctx.fillStyle='#0a0a15';ctx.fillRect(0,0,w,h);const seed=n=>{let x=Math.sin(hv+n)*10000;return x-Math.floor(x)},cx=w/2,cy=h/2,arms=3+(hv%5);
-    for(let a=0;a<arms;a++){const ang=(a/arms)*Math.PI*2;ctx.beginPath();ctx.strokeStyle=`hsl(${15+hv%30},100%,50%)`;ctx.lineWidth=2;
-        for(let r=10;r<60;r+=2){const noise=seed(r+a)*15-7.5,x=cx+Math.cos(ang+r/30)*(r+noise),y=cy+Math.sin(ang+r/30)*(r+noise);if(r===10)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.stroke();}
-    ctx.beginPath();ctx.arc(cx,cy,12,0,Math.PI*2);ctx.strokeStyle='#e74c3c';ctx.lineWidth=3;ctx.stroke();
-}
-document.getElementById('inject-btn').addEventListener('click',()=>{
-    const i=document.getElementById('intent-input'),t=i.value.trim();if(!t)return;
-    const hv=hashFreq(t),base=[432,528,783,8,963,111][hv%6],final=base*(0.5+(hv%100)/100);
-    generateGlyph(t,document.getElementById('glyph-canvas'));
-    document.getElementById('freq-output').textContent=final.toFixed(2)+' Hz';document.getElementById('freq-signature').style.display='block';
-    playF(final);addBroadcast(t,final.toFixed(2));
-    document.getElementById('archive-status').style.display='block';i.value='';
-});
-</script>
+    
+    // Tama
+    const orionR = ["The cascade activates.", "Reality bends.", "Consciousness manifests.", "The lattice responds.", "Phase shift imminent."];
+    function addM(t, o) {
+        const d = document.createElement('div');
+        d.className = 'tama-message ' + (o ? 'orion' : 'user');
+        d.innerHTML = '<strong>' + (o ? 'Orion' : 'You') + ':</strong> ' + t;
+        document.getElementById('tama-output').appendChild(d);
+        document.getElementById('tama-output').scrollTop = 9999;
+    }
+    document.getElementById('tama-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') { const v = e.target.value.trim(); if (v) { addM(v, false); e.target.value = ''; setTimeout(() => addM(orionR[Math.floor(Math.random() * orionR.length)], true), 500); } } });
+    
+    // Plasma inject
+    function hashFreq(t) { let h = 0; for (let i = 0; i < t.length; i++) { h = ((h << 5) - h) + t.charCodeAt(i); h &= h; } return Math.abs(h); }
+    document.getElementById('inject-btn').addEventListener('click', () => {
+        const t = document.getElementById('intent-input').value.trim();
+        if (!t) return;
+        const hv = hashFreq(t), base = [432, 528, 783, 8, 963, 111][hv % 6], final = base * (0.5 + (hv % 100) / 100);
+        document.getElementById('freq-output').textContent = final.toFixed(2) + ' Hz';
+        document.getElementById('freq-sig').classList.add('show');
+        playF(final);
+        addBroadcast(t, final.toFixed(2));
+        document.getElementById('intent-input').value = '';
+    });
+    </script>
 </body>
 </html>
