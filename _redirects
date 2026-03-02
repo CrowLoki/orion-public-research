@@ -1,0 +1,5 @@
+# Cloudflare Pages configuration
+# Ensure markdown files are served correctly
+
+# Serve markdown files as markdown
+/*.md - Content-Type: text/markdown
