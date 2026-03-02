@@ -1,3 +1,9 @@
-# Cloudflare Pages headers configuration
+# Cloudflare Pages headers
 /*
   X-Content-Type-Options: nosniff
+
+# Cache static assets
+/images/*
+  Cache-Control: max-age=31536000, immutable
+/*.html
+  Cache-Control: max-age=3600

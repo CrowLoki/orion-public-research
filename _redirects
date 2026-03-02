@@ -1,2 +1,3 @@
 # Cloudflare Pages configuration
-# Let Cloudflare Pages handle static files by default
+# HTML files are served directly, no redirect needed
+# Only SPA routes should fall back to index.html
