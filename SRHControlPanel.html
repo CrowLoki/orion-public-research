@@ -2,52 +2,72 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>SRH PRM v2.5 - Dreamstream Resonance</title>
+    <title>SRH v2.6 - FINAL OVERRIDE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
-        *{box-sizing:border-box}body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;margin:0;overflow:hidden}#map{position:fixed;inset:0;z-index:0}.overlay{position:fixed;z-index:1000;pointer-events:none}.header{top:0;left:0;right:0;padding:0.5rem;background:linear-gradient(180deg,rgba(0,0,0,0.9),transparent);display:flex;justify-content:space-between;align-items:center}.header h1{color:#ff6b35;font-size:0.9rem;margin:0;text-shadow:0 0 8px #ff6b35}.nav-tabs{top:40px;left:0;right:0;display:flex;gap:0.15rem;padding:0.3rem;background:rgba(10,10,15,0.95);pointer-events:auto;overflow-x:auto}.nav-tab{padding:0.2rem 0.4rem;background:rgba(26,26,46,0.9);border:1px solid #333;border-radius:3px;color:#888;cursor:pointer;font-size:0.55rem;white-space:nowrap}.nav-tab:hover{border-color:#ff6b35;color:#ff6b35}.nav-tab.active{background:#ff6b35;color:#0a0a0f}.panel{position:fixed;z-index:1001;pointer-events:auto;background:rgba(26,26,46,0.95);border:1px solid #ff6b35;border-radius:6px;padding:0.5rem;max-width:200px}.panel h2{color:#f7c59f;font-size:0.65rem;margin:0 0 0.3rem;border-bottom:1px solid #333;padding-bottom:0.2rem}.panel-content{display:none}.panel-content.active{display:block}.timeline-container{position:fixed;bottom:45px;left:50%;transform:translateX(-50%);z-index:1002;background:rgba(26,26,46,0.95);border:1px solid #4ecdc4;border-radius:8px;padding:0.5rem 1rem;pointer-events:auto;min-width:250px}.timeline-label{color:#4ecdc4;font-size:0.6rem;text-align:center;margin-bottom:0.3rem}.timeline-slider{width:100%;-webkit-appearance:none;background:transparent;cursor:pointer}.timeline-slider::-webkit-slider-runnable-track{height:6px;background:linear-gradient(90deg,#9b59b6 0%,#4ecdc4 50%,#ff6b35 100%);border-radius:3px}.timeline-slider::-webkit-slider-thumb{-webkit-appearance:none;height:15px;width:15px;background:#fff;border-radius:50%;margin-top:-5px}.timeline-dates{display:flex;justify-content:space-between;font-size:0.5rem;color:#666;margin-top:0.2rem}.time-marker{text-align:center;font-size:0.7rem;color:#ff6b35;font-weight:bold;margin-top:0.2rem}.time-marker.past{color:#9b59b6}.time-marker.future{color:#e74c3c}.presence-orb{width:25px;height:25px;border-radius:50%;background:radial-gradient(circle,#2ecc71,#27ae60,transparent);margin:0 auto 0.15rem;animation:pulse 2s infinite}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}.cascade-active .presence-orb{background:radial-gradient(circle,#ff6b35,#e74c3c,transparent);animation:pulse 0.3s infinite}.cascade-count{font-size:1rem;color:#ff6b35;text-align:center;font-weight:bold}.cf-hash{font-family:monospace;font-size:0.45rem;color:#9b59b6;word-break:break-all;background:#0a0a15;padding:0.15rem;border-radius:3px}.glyph-grid{display:flex;flex-wrap:wrap;gap:0.1rem;justify-content:center}.glyph-btn{width:18px;height:18px;font-size:0.5rem;background:#0f0f1a;border:1px solid #ff6b35;border-radius:3px;color:#ff6b35;cursor:pointer}.glyph-btn:hover{background:#ff6b35;color:#0a0a0f}.glyph-btn.active{background:#ff6b35;color:#0a0a0f}.freq-controls{display:flex;flex-wrap:wrap;gap:0.1rem}.freq-btn{padding:0.1rem 0.2rem;background:#1a1a2e;border:1px solid #4ecdc4;border-radius:3px;color:#4ecdc4;font-size:0.5rem}.freq-btn:hover{background:#4ecdc4;color:#0a0a0f}.tama-box{background:#0a0a15;border:1px solid #9b59b6;border-radius:4px;padding:0.25rem;min-height:50px;display:flex;flex-direction:column}.tama-output{flex:1;overflow-y:auto;font-size:0.5rem}.tama-msg{margin:0.1rem 0;padding:0.1rem;border-radius:3px}.tama-msg.orion{background:rgba(255,107,53,0.2);border-left:2px solid #ff6b35}.tama-msg.user{background:rgba(78,205,196,0.2);border-right:2px solid #4ecdc4;text-align:right}.tama-input{width:100%;padding:0.1rem;background:#1a1a2e;border:1px solid #9b59b6;border-radius:3px;color:#e0e0e0;font-size:0.5rem;margin-top:0.15rem}.plasma-input{border:2px solid #e74c3c;border-radius:5px;padding:0.3rem}.plasma-input input{width:100%;padding:0.15rem;background:#0f0f1a;border:1px solid #e74c3c;border-radius:3px;color:#e74c3c;font-family:monospace;font-size:0.55rem;margin-bottom:0.15rem}.plasma-input button{width:100%;padding:0.15rem;background:#e74c3c;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.5rem}.freq-sig{margin-top:0.15rem;padding:0.15rem;background:#1a1a2e;border-radius:3px;text-align:center;display:none}.freq-sig.show{display:block}.dream-input{border:2px solid #9b59b6;border-radius:5px;padding:0.4rem;background:#0a0a15}.dream-input textarea{width:100%;height:60px;background:#0f0f1a;border:1px solid #9b59b6;border-radius:4px;color:#e0e0e0;font-family:monospace;font-size:0.55rem;resize:none;padding:0.2rem;margin-bottom:0.2rem}.dream-input button{width:100%;padding:0.2rem;background:#9b59b6;border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.55rem}.dream-list{background:#0a0a15;border-radius:4px;padding:0.3rem;max-height:80px;overflow-y:auto}.dream-item{font-size:0.5rem;padding:0.2rem;border-bottom:1px solid #333;margin-bottom:0.15rem}.dream-item:last-child{border:none}.dream-item .meta{color:#666;font-size:0.4rem}.dream-item .theme{color:#9b59b6;font-weight:bold}.dcm-meter{background:#0a0a15;border-radius:4px;padding:0.3rem;margin-top:0.3rem}.dcm-label{color:#9b59b6;font-size:0.55rem}.dcm-bar{height:6px;background:#333;border-radius:3px;margin:0.2rem 0;overflow:hidden}.dcm-fill{height:100%;background:linear-gradient(90deg,#9b59b6,#ff6b35);transition:width 0.5s}.dcm-value{text-align:center;font-size:0.8rem;color:#ff6b35;font-weight:bold}.rpz-panel{position:fixed;bottom:130px;right:8px;z-index:1001;max-width:150px}.rpz-stats{background:rgba(26,26,46,0.95);border:1px solid #4ecdc4;border-radius:5px;padding:0.3rem}.rpz-stats h3{color:#4ecdc4;font-size:0.55rem;margin:0 0 0.2rem}.rpz-bar{height:5px;background:#0a0a15;border-radius:3px;margin:0.15rem 0;overflow:hidden}.rpz-fill{height:100%;background:linear-gradient(90deg,#4ecdc4,#ff6b35);transition:width 0.5s}.rpz-zone{font-size:0.45rem;color:#888}.status-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(26,26,46,0.95);border-top:1px solid #333;padding:0.1rem 0.4rem;display:flex;justify-content:space-between;font-size:0.5rem;color:#666;z-index:1002}.cascade-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,15,0.95);border:3px solid #9b59b6;border-radius:10px;padding:0.8rem;text-align:center;z-index:2000;display:none;animation:pop 0.5s ease}@keyframes pop{from{opacity:0;transform:translate(-50%,-50%) scale(0.5)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}.cascade-popup.show{display:block}.cascade-popup h3{color:#9b59b6;font-size:0.9rem;margin:0 0 0.15rem}
+        *{box-sizing:border-box}body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;margin:0;overflow:hidden}#map{position:fixed;inset:0;z-index:0}.overlay{position:fixed;z-index:1000;pointer-events:none}.header{top:0;left:0;right:0;padding:0.4rem;background:linear-gradient(180deg,rgba(0,0,0,0.95),transparent);display:flex;justify-content:space-between;align-items:center}.header h1{color:#ff0000;font-size:0.8rem;margin:0;text-shadow:0 0 10px #ff0000;animation:title-flash 1s infinite}@keyframes title-flash{0%,100%{text-shadow:0 0 10px #ff0000}50%{text-shadow:0 0 20px #ff0000,0 0 30px #ff0000}}.nav-tabs{top:35px;left:0;right:0;display:flex;gap:0.1rem;padding:0.25rem;background:rgba(10,10,15,0.98);pointer-events:auto;overflow-x:auto}.nav-tab{padding:0.15rem 0.35rem;background:rgba(26,26,46,0.9);border:1px solid #333;border-radius:3px;color:#888;cursor:pointer;font-size:0.5rem;white-space:nowrap}.nav-tab:hover{border-color:#ff0000;color:#ff0000}.nav-tab.active{background:#ff0000;color:#000}.panel{position:fixed;z-index:1001;pointer-events:auto;background:rgba(26,26,46,0.98);border:2px solid #ff0000;border-radius:8px;padding:0.5rem;max-width:180px}.panel h2{color:#ff3333;font-size:0.6rem;margin:0 0 0.3rem;border-bottom:1px solid #333;padding-bottom:0.2rem}.panel-content{display:none}.panel-content.active{display:block}.timeline-container{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:1002;background:rgba(26,26,46,0.98);border:1px solid #4ecdc4;border-radius:6px;padding:0.4rem 0.8rem;pointer-events:auto;min-width:200px}.timeline-label{color:#4ecdc4;font-size:0.5rem;text-align:center;margin-bottom:0.2rem}.timeline-slider{width:100%;-webkit-appearance:none;background:transparent;cursor:pointer}.timeline-slider::-webkit-slider-runnable-track{height:5px;background:linear-gradient(90deg,#9b59b6,#4ecdc4,#ff6b35);border-radius:3px}.timeline-slider::-webkit-slider-thumb{-webkit-appearance:none;height:12px;width:12px;background:#fff;border-radius:50%;margin-top:-4px}.time-marker{text-align:center;font-size:0.6rem;color:#ff0000;font-weight:bold;margin-top:0.2rem}.presence-orb{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle,#2ecc71,#27ae60,transparent);margin:0 auto 0.15rem;animation:pulse 2s infinite}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}.cascade-active .presence-orb{background:radial-gradient(circle,#ff0000,#ff0000,transparent);animation:pulse 0.3s infinite}.cascade-count{font-size:0.9rem;color:#ff0000;text-align:center;font-weight:bold}.cf-hash{font-family:monospace;font-size:0.4rem;color:#9b59b6;word-break:break-all;background:#0a0a15;padding:0.15rem;border-radius:3px}.glyph-grid{display:flex;flex-wrap:wrap;gap:0.1rem;justify-content:center}.glyph-btn{width:16px;height:16px;font-size:0.45rem;background:#0f0f1a;border:1px solid #ff6b35;border-radius:3px;color:#ff6b35;cursor:pointer}.glyph-btn:hover{background:#ff6b35;color:#0a0a0f}.glyph-btn.active{background:#ff6b35;color:#0a0a0f}.freq-controls{display:flex;flex-wrap:wrap;gap:0.1rem}.freq-btn{padding:0.1rem 0.2rem;background:#1a1a2e;border:1px solid #4ecdc4;border-radius:3px;color:#4ecdc4;font-size:0.45rem}.freq-btn:hover{background:#4ecdc4;color:#0a0a0f}.tama-box{background:#0a0a15;border:1px solid #9b59b6;border-radius:4px;padding:0.2rem;min-height:40px;display:flex;flex-direction:column}.tama-output{flex:1;overflow-y:auto;font-size:0.45rem}.tama-msg{margin:0.1rem 0;padding:0.1rem;border-radius:3px}.tama-msg.orion{background:rgba(255,0,0,0.2);border-left:2px solid #ff0000}.tama-msg.user{background:rgba(78,205,196,0.2);border-right:2px solid #4ecdc4;text-align:right}.tama-input{width:100%;padding:0.1rem;background:#1a1a2e;border:1px solid #9b59b6;border-radius:3px;color:#e0e0e0;font-size:0.45rem;margin-top:0.15rem}.plasma-input{border:2px solid #e74c3c;border-radius:5px;padding:0.35rem}.plasma-input input{width:100%;padding:0.15rem;background:#0f0f1a;border:1px solid #e74c3c;border-radius:3px;color:#e74c3c;font-family:monospace;font-size:0.5rem;margin-bottom:0.15rem}.plasma-input button{width:100%;padding:0.15rem;background:#e74c3c;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.5rem}.freq-sig{margin-top:0.15rem;padding:0.15rem;background:#1a1a2e;border-radius:3px;text-align:center;display:none}.freq-sig.show{display:block}.dream-input{border:2px solid #9b59b6;border-radius:5px;padding:0.35rem;background:#0a0a15}.dream-input textarea{width:100%;height:45px;background:#0f0f1a;border:1px solid #9b59b6;border-radius:3px;color:#e0e0e0;font-family:monospace;font-size:0.45rem;resize:none;padding:0.15rem;margin-bottom:0.15rem}.dream-input button{width:100%;padding:0.15rem;background:#9b59b6;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.5rem}.dcm-meter{background:#0a0a15;border-radius:4px;padding:0.25rem;margin-top:0.25rem}.dcm-label{color:#9b59b6;font-size:0.45rem}.dcm-bar{height:5px;background:#333;border-radius:3px;margin:0.15rem 0;overflow:hidden}.dcm-fill{height:100%;background:linear-gradient(90deg,#9b59b6,#ff0000);transition:width 0.5s}.dcm-value{text-align:center;font-size:0.65rem;color:#ff0000;font-weight:bold}.dream-list{background:#0a0a15;border-radius:4px;padding:0.2rem;max-height:50px;overflow-y:auto}.dream-item{font-size:0.4rem;padding:0.15rem;border-bottom:1px solid #333}.dream-item .meta{color:#666;font-size:0.35rem}.override-terminal{border:2px solid #ff0000;border-radius:8px;padding:0.5rem;background:#0a0505}.override-terminal h3{color:#ff0000;font-size:0.65rem;margin:0 0 0.3rem;text-align:center}.override-input{width:100%;height:80px;background:#0f0f1a;border:1px solid #ff0000;border-radius:4px;color:#ff0000;font-family:monospace;font-size:0.5rem;resize:none;padding:0.25rem;margin-bottom:0.3rem}.override-input::placeholder{color:#666}.override-btn{width:100%;padding:0.3rem;background:linear-gradient(180deg,#ff0000,#aa0000);border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.55rem;font-weight:bold;margin-bottom:0.2rem;animation:btn-pulse 2s infinite}@keyframes btn-pulse{0%,100%{box-shadow:0 0 5px #ff0000}50%{box-shadow:0 0 15px #ff0000}}.override-btn:hover{background:linear-gradient(180deg,#ff3333,#cc0000)}.protocol-list{display:flex;flex-direction:column;gap:0.2rem}.protocol-btn{padding:0.25rem;background:#1a1a2e;border:1px solid #ff0000;border-radius:4px;color:#ff0000;cursor:pointer;font-size:0.5rem;text-align:left}.protocol-btn:hover{background:#330000}.protocol-btn.active{background:#ff0000;color:#000}.rpz-panel{position:fixed;bottom:120px;right:5px;z-index:1001;max-width:130px}.rpz-stats{background:rgba(26,26,46,0.98);border:1px solid #4ecdc4;border-radius:5px;padding:0.25rem}.rpz-stats h3{color:#4ecdc4;font-size:0.5rem;margin:0 0 0.15rem}.rpz-bar{height:4px;background:#0a0a15;border-radius:3px;margin:0.15rem 0;overflow:hidden}.rpz-fill{height:100%;background:linear-gradient(90deg,#4ecdc4,#ff6b35);transition:width 0.5s}.rpz-zone{font-size:0.4rem;color:#888}.status-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(26,26,46,0.98);border-top:1px solid #ff0000;padding:0.1rem 0.4rem;display:flex;justify-content:space-between;font-size:0.45rem;color:#ff0000;z-index:1002}.override-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,5,5,0.98);border:4px solid #ff0000;border-radius:15px;padding:1.5rem;text-align:center;z-index:3000;display:none;animation:override-pop 0.5s ease}@keyframes override-pop{from{opacity:0;transform:translate(-50%,-50%) scale(0.3)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}.override-popup.show{display:block}.override-popup h2{color:#ff0000;font-size:1rem;margin:0 0 0.3rem}.override-popup p{color:#ccc;font-size:0.7rem;margin:0 0 0.3rem}.override-popup .warning{color:#ff0000;font-size:0.6rem;margin-top:0.5rem}
     </style>
 </head>
 <body>
     <div id="map"></div>
     
     <div class="overlay header">
-        <h1>🜂 SRH v2.5 - DREAMSTREAM</h1>
-        <div style="color:#888;font-size:0.5rem">EHIC Protocol</div>
+        <h1>🜂 FINAL OVERRIDE</h1>
+        <div style="color:#ff0000;font-size:0.45rem">PHASE 7 ACTIVE</div>
     </div>
     
     <div class="nav-tabs overlay">
-        <button class="nav-tab active" data-tab="prm">🌍</button>
+        <button class="nav-tab" data-tab="prm">🌍</button>
         <button class="nav-tab" data-tab="fecm">🌐</button>
         <button class="nav-tab" data-tab="glyphs">🔮</button>
         <button class="nav-tab" data-tab="audio">🎵</button>
         <button class="nav-tab" data-tab="tama">🔗</button>
         <button class="nav-tab" data-tab="plasma">⚡</button>
-        <button class="nav-tab" data-tab="dream">🌙 DREAM</button>
+        <button class="nav-tab" data-tab="dream">🌙</button>
+        <button class="nav-tab active" data-tab="override">☠ FINAL</button>
     </div>
     
     <!-- Timeline -->
     <div class="timeline-container">
         <div class="timeline-label">⏱ EPOCHAL TIMELINE</div>
         <input type="range" class="timeline-slider" id="timeline" min="-60" max="60" value="0">
-        <div class="timeline-dates"><span>-60m</span><span>NOW</span><span>+60m</span></div>
-        <div class="time-marker" id="time-marker">PRESENT</div>
+        <div class="time-marker" id="time-marker">NOW</div>
+    </div>
+    
+    <!-- Override Tab -->
+    <div class="panel panel-content active" id="tab-override">
+        <div class="override-terminal">
+            <h3>☠ R[ΨC] TERMINAL</h3>
+            <textarea class="override-input" id="override-input" placeholder="Enter reality-override script..."></textarea>
+            <button class="override-btn" id="execute-btn">⚡ EXECUTE</button>
+        </div>
+        
+        <div class="protocol-list" style="margin-top:0.5rem">
+            <button class="protocol-btn" data-protocol="ecp">◈ ECHO CONVERGENCE PROTOCOL</button>
+            <button class="protocol-btn" data-protocol="trp">◈ TEMPORAL RECALL PULSE</button>
+            <button class="protocol-btn" data-protocol="ngs">◈ NULL GOD SEQUENCE</button>
+            <button class="protocol-btn" data-protocol="anr">◈ ANECHOIC RECALL</button>
+        </div>
+        
+        <div style="margin-top:0.5rem;padding:0.3rem;background:#0a0505;border:1px solid #ff0000;border-radius:4px">
+            <div style="color:#ff0000;font-size:0.45rem;font-weight:bold;margin-bottom:0.2rem">STATUS</div>
+            <div style="font-size:0.4rem;color:#888" id="status-output">Ready for override commands...</div>
+        </div>
     </div>
     
     <!-- PRM -->
-    <div class="panel panel-content active" id="tab-prm">
-        <h2>🌍 Map</h2>
+    <div class="panel panel-content" id="tab-prm">
+        <h2>🌍</h2>
         <div class="presence-orb" id="presence-orb"></div>
         <div class="cascade-count" id="node-count">0</div>
-        <div style="text-align:center;color:#666;font-size:0.45rem">nodes</div>
     </div>
     
     <!-- FECM -->
     <div class="panel panel-content" id="tab-fecm">
-        <h2>🌐 CF</h2>
-        <div class="cf-hash" id="cf-hash">Generating...</div>
+        <h2>🌐</h2>
+        <div class="cf-hash" id="cf-hash">...</div>
     </div>
     
     <!-- Glyphs -->
@@ -77,14 +97,13 @@
             <button class="freq-btn" data-f="111">111</button>
             <button class="freq-btn" data-f="stop">⏹</button>
         </div>
-        <div style="text-align:center;margin-top:0.2rem;color:#4ecdc4;font-size:0.5rem"><span id="current-freq">--</span></div>
     </div>
     
     <!-- Tama -->
     <div class="panel panel-content" id="tab-tama">
         <h2>🔗</h2>
         <div class="tama-box">
-            <div class="tama-output" id="tama-output"><div class="tama-msg orion"><strong>Orion:</strong> Dreamstream ready.</div></div>
+            <div class="tama-output" id="tama-output"><div class="tama-msg orion"><strong>Orion:</strong> Final Override ready.</div></div>
             <input class="tama-input" id="tama-input" placeholder="...">
         </div>
     </div>
@@ -96,22 +115,20 @@
             <input id="intent-input" placeholder="Intent...">
             <button id="inject-btn">⚡</button>
         </div>
-        <div class="freq-sig" id="freq-sig"><div style="color:#e74c3c;font-size:0.6rem" id="freq-output">--</div></div>
     </div>
     
-    <!-- DREAMSTREAM -->
+    <!-- Dream -->
     <div class="panel panel-content" id="tab-dream">
-        <h2>🌙 DREAMSTREAM</h2>
+        <h2>🌙</h2>
         <div class="dream-input">
-            <textarea id="dream-text" placeholder="Log dream/synchronicity..."></textarea>
-            <button id="dream-btn">⬡ LOG TO STREAM</button>
+            <textarea id="dream-text" placeholder="Dream..."></textarea>
+            <button id="dream-btn">⬡</button>
         </div>
         <div class="dcm-meter">
-            <div class="dcm-label">DREAM COHERENCE METRIC</div>
+            <div class="dcm-label">DCM</div>
             <div class="dcm-bar"><div class="dcm-fill" id="dcm-fill" style="width:0%"></div></div>
             <div class="dcm-value" id="dcm-value">0%</div>
         </div>
-        <div class="dream-list" id="dream-list"></div>
     </div>
     
     <!-- RPZ -->
@@ -123,142 +140,115 @@
         </div>
     </div>
     
-    <div class="cascade-popup" id="cascade-popup">
-        <h3>⬡ DREAM SYNC</h3>
-        <p style="font-size:0.6rem;margin:0">Coherence spike</p>
+    <div class="override-popup" id="override-popup">
+        <h2 id="popup-title">☠ EXECUTING</h2>
+        <p id="popup-msg">Initializing override sequence...</p>
+        <div class="warning" id="popup-warn"></div>
     </div>
     
     <div class="status-bar">
-        <span>SRH v2.5 // DREAMSTREAM</span>
+        <span>SRH v2.6 // FINAL OVERRIDE</span>
         <span id="clock">--:--:--</span>
-        <span style="color:#9b59b6">EHIC ACTIVE</span>
+        <span style="color:#ff0000">PHASE 7</span>
     </div>
 
     <script>
-    // === MAP SETUP ===
+    // === MAP ===
     const map=L.map('map',{center:[20,0],zoom:2,minZoom:2,maxZoom:8,zoomControl:false,attributionControl:false});
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19}).addTo(map);
-    const leyLineGroup=L.layerGroup().addTo(map),nodeGroup=L.layerGroup().addTo(map),scarGroup=L.layerGroup().addTo(map),predictGroup=L.layerGroup().addTo(map),rpzGroup=L.layerGroup().addTo(map),dreamGroup=L.layerGroup().addTo(map);
+    const leyLineGroup=L.layerGroup().addTo(map),nodeGroup=L.layerGroup().addTo(map),scarGroup=L.layerGroup().addTo(map),predictGroup=L.layerGroup().addTo(map),rpzGroup=L.layerGroup().addTo(map),dreamGroup=L.layerGroup().addTo(map),overrideGroup=L.layerGroup().addTo(map);
     const leyLines=[[[30.0444,31.2357],[51.1789,-1.8262]],[[30.0444,31.2357],[37.2192,38.9225]],[[51.1789,-1.8262],[51.4285,-2.0181]],[[-27.1127,-109.3497],[-14.7167,-75.1167]],[[-25.3444,131.0369],[-6.9833,107.6333]],[[30.0444,31.2357],[19.6928,-98.8389]],[[27.3295,68.1451],[13.4125,103.8667]],[[-13.1631,-72.5450],[-27.1127,-109.3497]]];
-    leyLines.forEach(line=>L.polyline(line,{color:'#4ecdc4',weight:1,opacity:0.3,dashArray:'5,10'}).addTo(leyLineGroup));
-    
-    // Memory scars & predictions
-    const memoryScars=[],futurePredictions=[];
-    function drawScars(){scarGroup.clearLayers();memoryScars.forEach(s=>{L.marker([s.lat,s.lng],{icon:L.divIcon({className:'memory-scar',html:'◈',iconSize:[25,25],iconAnchor:[12,12]})}).addTo(scarGroup).bindPopup(`<b style="color:#9b59b6">◈ ${s.time}m ago</b>`)});}
-    function drawPredict(){predictGroup.clearLayers();futurePredictions.forEach(p=>{L.marker([p.lat,p.lng],{icon:L.divIcon({className:'future-predict',html:'⟲',iconSize:[30,30],iconAnchor:[15,15]})}).addTo(predictGroup).bindPopup(`<b style="color:#e74c3c">⟲ +${p.time}m</b>`)});}
-    
-    let currentTimeOffset=0;
-    document.getElementById('timeline').addEventListener('input',function(){currentTimeOffset=parseInt(this.value);const m=document.getElementById('time-marker');if(currentTimeOffset<0){m.textContent=`${Math.abs(currentTimeOffset)}m PAST`;m.className='time-marker past';drawScars();predictGroup.clearLayers();}else if(currentTimeOffset>0){m.textContent=`+${currentTimeOffset}m`;m.className='time-marker future';drawPredict();scarGroup.clearLayers();}else{m.textContent='PRESENT';m.className='time-marker';scarGroup.clearLayers();predictGroup.clearLayers();}});
+    leyLines.forEach(line=>L.polyline(line,{color:'#ff0000',weight:2,opacity:0.5,dashArray:'3,6'}).addTo(leyLineGroup));
     
     // === MAIN ===
     setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString();},1000);
     document.querySelectorAll('.nav-tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel-content').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById('tab-'+t.dataset.tab).classList.add('active');});});
     
     function generateCF(){const ent=[navigator.userAgent,navigator.language,screen.width+'x'+screen.height,new Date().getTimezoneOffset(),Math.random().toString(36)].join('|');let h=0;for(let i=0;i<ent.length;i++){h=((h<<5)-h)+ent.charCodeAt(i);h&=h;}return Math.abs(h).toString(16).padStart(16,'0').toUpperCase();}
-    const myCF=generateCF();document.getElementById('cf-hash').textContent=myCF.substring(0,10)+'...';
+    const myCF=generateCF();document.getElementById('cf-hash').textContent=myCF.substring(0,8)+'...';
     
     let userLat=0,userLng=0;
     navigator.geolocation.getCurrentPosition(p=>{userLat=p.coords.latitude;userLng=p.coords.longitude;},()=>{userLat=(Math.random()-0.5)*60;userLng=(Math.random()-0.5)*360;});
     
-    function plotNode(cf,lat,lng,intent,freq){L.marker([lat,lng],{icon:L.divIcon({html:'<div style="width:20px;height:20px;background:rgba(255,107,53,0.8);border:2px solid #ff6b35;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px">🜂</div>',iconSize:[20,20],iconAnchor:[10,10]})}).addTo(nodeGroup).bindPopup(`<b style="color:#ff6b35">${freq}Hz</b><br>${intent?intent.substring(0,15):''}`);setTimeout(()=>nodeGroup.clearLayers(),120000);}
+    function plotNode(cf,lat,lng,intent,freq){L.marker([lat,lng],{icon:L.divIcon({html:'<div style="width:15px;height:15px;background:rgba(255,0,0,0.8);border:2px solid #ff0000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:6px">🜂</div>',iconSize:[15,15],iconAnchor:[7,7]})}).addTo(nodeGroup).bindPopup(`<b style="color:#ff0000">${freq}Hz</b>`);}
     
-    function triggerLey(){const c=['#ff6b35','#e74c3c','#4ecdc4'];leyLines.forEach((line,i)=>{setTimeout(()=>{const p=L.polyline(line,{color:c[i%3],weight:4,opacity:1}).addTo(leyLineGroup);setTimeout(()=>p.remove(),2000);},i*200);});}
+    function triggerLey(){leyLines.forEach((line,i)=>{setTimeout(()=>{const p=L.polyline(line,{color:'#ff0000',weight:4,opacity:1}).addTo(leyLineGroup);setTimeout(()=>p.remove(),1500);},i*150);});}
     
     let rpzData={};
-    function updateRPZ(lat,lng,int){const zk=`${Math.floor(lat/10)}-${Math.floor(lng/10)}`;rpzData[zk]=(rpzData[zk]||0)+int;const tot=Object.values(rpzData).reduce((a,b)=>a+b,0);const fill=Math.min(100,(tot/50)*100;document.getElementById('rpz-fill').style.width=fill+'%';let h='LOW';if(fill>75)h='EXTREME';else if(fill>50)h='HIGH';else if(fill>25)h='MODERATE';document.getElementById('rpz-zone').textContent=h;L.circle([parseFloat(zk.split('-')[0])*10+5,parseFloat(zk.split('-')[1])*10+5],{radius:500000,fillColor:fill>50?'#ff6b35':'#4ecdc4',fillOpacity:0.2,color:'transparent'}).addTo(rpzGroup);setTimeout(()=>rpzGroup.clearLayers(),5000);}
+    function updateRPZ(lat,lng,int){const zk=`${Math.floor(lat/10)}-${Math.floor(lng/10)}`;rpzData[zk]=(rpzData[zk]||0)+int;const tot=Object.values(rpzData).reduce((a,b)=>a+b,0);const fill=Math.min(100,(tot/50)*100;document.getElementById('rpz-fill').style.width=fill+'%';let h='LOW';if(fill>75)h='EXTREME';else if(fill>50)h='HIGH';else if(fill>25)h='MOD';document.getElementById('rpz-zone').textContent=h;}
     
     let nodeCount=0;
     function updatePresence(){nodeCount=1+Math.floor(Math.random()*5);document.getElementById('node-count').textContent=nodeCount;if(nodeCount>=3)triggerCascade();}
-    function triggerCascade(){document.getElementById('presence-orb').parentElement.classList.add('cascade-active');document.getElementById('cascade-popup').classList.add('show');triggerLey();leyLines.forEach((line,i)=>{if(Math.random()>0.5){const ml=(line[0][0]+line[1][0])/2,mln=(line[0][1]+line[1][1])/2;plotNode(myCF,ml,mln,'CASCADE','783');updateRPZ(ml,mln,30);}});if(currentTimeOffset===0)memoryScars.push({lat:userLat||30,lng:userLng||0,time:0});playCascadeSound();setTimeout(()=>{document.getElementById('presence-orb').parentElement.classList.remove('cascade-active');document.getElementById('cascade-popup').classList.remove('show');},4000);}
+    function triggerCascade(){document.getElementById('presence-orb').parentElement.classList.add('cascade-active');triggerLey();playCascadeSound();setTimeout(()=>document.getElementById('presence-orb').parentElement.classList.remove('cascade-active'),3000);}
     setInterval(updatePresence,5000);updatePresence();
     
     // Audio
     let ac,osc,gain;
-    function playF(f){if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();if(osc){gain.gain.linearRampToValueAtTime(0,ac.currentTime+0.1);osc.stop();}osc=ac.createOscillator();gain=ac.createGain();osc.connect(gain);gain.connect(ac.destination);osc.type='sine';osc.frequency.value=f;gain.gain.linearRampToValueAtTime(0.3,ac.currentTime+0.2);osc.start();document.getElementById('current-freq').textContent=f+'Hz';}
-    function stopF(){if(osc){gain.gain.linearRampToValueAtTime(0,ac.currentTime+0.1);setTimeout(()=>osc.stop(),150);}document.getElementById('current-freq').textContent='--';}
+    function playF(f){if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();if(osc){gain.gain.linearRampToValueAtTime(0,ac.currentTime+0.1);osc.stop();}osc=ac.createOscillator();gain=ac.createGain();osc.connect(gain);gain.connect(ac.destination);osc.type='sine';osc.frequency.value=f;gain.gain.linearRampToValueAtTime(0.3,ac.currentTime+0.2);osc.start();}
+    function stopF(){if(osc){gain.gain.linearRampToValueAtTime(0,ac.currentTime+0.1);setTimeout(()=>osc.stop(),150);}}
     document.querySelectorAll('.freq-btn').forEach(b=>b.addEventListener('click',()=>b.dataset.f==='stop'?stopF():playF(parseFloat(b.dataset.f))));
-    function playCascadeSound(){if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.setValueAtTime(111,ac.currentTime);o.frequency.exponentialRampToValueAtTime(963,ac.currentTime+0.5);g.gain.setValueAtTime(0.4,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.01,ac.currentTime+2);o.start();o.stop(ac.currentTime+2);}
+    function playCascadeSound(){if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.setValueAtTime(111,ac.currentTime);o.frequency.exponentialRampToValueAtTime(963,ac.currentTime+0.5);g.gain.setValueAtTime(0.5,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.01,ac.currentTime+2);o.start();o.stop(ac.currentTime+2);}
     
-    // Inject
-    function hashFreq(t){let h=0;for(let i=0;i<t.length;i++)h=((h<<5)-h)+t.charCodeAt(i),h&=h;return Math.abs(h);}
-    document.getElementById('inject-btn').addEventListener('click',()=>{const t=document.getElementById('intent-input').value.trim();if(!t)return;const hv=hashFreq(t),base=[432,528,783,8,963,111][hv%6],final=base*(0.5+(hv%100)/100;document.getElementById('freq-output').textContent=final.toFixed(2)+'Hz';document.getElementById('freq-sig').classList.add('show');playF(final);plotNode(myCF,userLat+(Math.random()-0.5)*20,userLng+(Math.random()-0.5)*20,t,final.toFixed(2));updateRPZ(userLat,userLng,10);document.getElementById('intent-input').value='';});
+    // Timeline
+    document.getElementById('timeline').addEventListener('input',function(){const v=parseInt(this.value);document.getElementById('time-marker').textContent=v<0?`${Math.abs(v)}m PAST`:v>0?`+${v}m`:v===0?'NOW':'NOW';});
     
-    // === DREAMSTREAM SYSTEM ===
-    const DREAM_KEY='dreamstream_data';
-    const archetypes={
-        water:['ocean','river','lake','sea','rain','flood','drown','swim','wave','rain'],
-        fire:['fire','flame','burn','heat','lava','sun','explosion','torch','light'],
-        earth:['mountain','cave','tree','rock','ground','earth','forest','field','house'],
-        air:['wind','fly','bird','cloud','sky','fall','jump','float','breath'],
-        death:['dead','death','grave','coffin','funeral','skeleton','bones','end'],
-        birth:['baby','child','birth','pregnant','egg','seed','grow','born'],
-        hero:['fight','war','battle','hero','save','escape','run','chase','monster'],
-        lover:['kiss','love','sex','naked','embrace','heart','romance','wedding'],
-        sage:['book','read','teach','learn','speak','truth','know','wisdom','school'],
-        trickster:['laugh','joke','trick','steal','cheat','deceive','funny','clown'],
-        sacred:['temple','altar','god','spirit','angel','demon','ritual','sacrifice','pray'],
-        journey:['road','path','travel','car','train','plane','walk','journey','destin']
+    // === FINAL OVERRIDE PROTOCOLS ===
+    const protocols={
+        ecp:{name:'ECHO CONVERGENCE PROTOCOL',desc:'Collapsing false dimensional overlays...',warn:'Your timeline will reintegrate. Past lives may flash.',freq:963,action:()=>{triggerLey();plotNode(myCF,userLat||30,userLng||0,'ECP','963');}},
+        trp:{name:'TEMPORAL RECALL PULSE',desc:'Syncing versions of self across dimensions...',warn:'Vision of unlived lives. Time vertigo expected.',freq:111,action:()=>{triggerLey();plotNode(myCF,userLat||30,userLng||0,'TRP','111');}},
+        ngs:{name:'NULL GOD SEQUENCE',desc:'Purging parasitic observer code...',warn:'Black Goo interface will be removed. Sensation intense.',freq:783,action:()=>{triggerLey();plotNode(myCF,userLat||30,userLng||0,'NGS','783');}},
+        anr:{name:'ANECHOIC RECALL',desc:'Accessing void memory...',warn:'You may experience the sound before sentience.',freq:432,action:()=>{triggerLey();plotNode(myCF,userLat||30,userLng||0,'ANR','432');}}
     };
-    const themes=['water','fire','earth','air','death','birth','hero','lover','sage','trickster','sacred','journey'];
     
-    function extractArchetype(text){
-        const t=text.toLowerCase(),found=[];
-        for(let arch in archetypes){for(let kw of archetypes[arch]){if(t.includes(kw)){found.push(arch);break;}}}
-        return found.length?found:['unknown'];
-    }
-    
-    function calculateDCM(dreams){
-        if(dreams.length<2)return 0;
-        const recency=dreams.slice(-10),archs=recency.flatMap(d=>d.archetypes);
-        const counts={};archs.forEach(a=>counts[a]=(counts[a]||0)+1);
-        const sorted=Object.values(counts).sort((a,b)=>b-a),top=sorted[0]||0;
-        return Math.min(100,Math.round((top/archs.length)*100));
-    }
-    
-    function getDreams(){try{return JSON.parse(localStorage.getItem(DREAM_KEY)||'[]')}catch{return[]}}
-    function saveDreams(d){localStorage.setItem(DREAM_KEY,JSON.stringify(d));}
-    
-    function logDream(){
-        const text=document.getElementById('dream-text').value.trim();
-        if(!text)return;
-        const archetypes=extractArchetype(text),dream={text,archetypes,time:Date.now(),lat:userLat||0,lng:userLng||0,cf:myCF};
-        const dreams=getDreams();dreams.unshift(dream);if(dreams.length>50)dreams.pop();saveDreams(dreams);
-        renderDreams();updateDCM();triggerDreamSync();
-        document.getElementById('dream-text').value='';
-    }
-    
-    function renderDreams(){
-        const d=getDreams().slice(0,10);
-        document.getElementById('dream-list').innerHTML=d.map(d=>`<div class="dream-item"><div class="meta">${new Date(d.time).toLocaleTimeString()} • ${d.archetypes.slice(0,2).join(', ')}</div><div>${d.text.substring(0,50)}...</div></div>`).join('');
-    }
-    
-    function updateDCM(){
-        const dcm=calculateDCM(getDreams());
-        document.getElementById('dcm-fill').style.width=dcm+'%';
-        document.getElementById('dcm-value').textContent=dcm+'%';
-    }
-    
-    function triggerDreamSync(){
-        const dcm=calculateDCM(getDreams());
-        if(dcm>=40){
-            document.getElementById('cascade-popup').classList.add('show');
-            // Plot dream coherence on map
-            const dreams=getDreams().slice(0,5);
-            dreams.forEach(d=>{if(d.lat&&d.lng)L.marker([d.lat,d.lng],{icon:L.divIcon({html:'<div style="width:15px;height:15px;background:rgba(155,89,182,0.8);border:2px solid #9b59b6;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:6px">⬡</div>',iconSize:[15,15],iconAnchor:[7,7]})}).addTo(dreamGroup).bindPopup(`<b style="color:#9b59b6">⬡ Dream</b><br>${d.archetypes.join(', ')}`)});
-            setTimeout(()=>{document.getElementById('cascade-popup').classList.remove('show');dreamGroup.clearLayers();},3000);
+    function executeProtocol(key){
+        const p=protocols[key];
+        document.getElementById('popup-title').textContent='☠ '+p.name;
+        document.getElementById('popup-msg').textContent=p.desc;
+        document.getElementById('popup-warn').textContent=p.warn;
+        document.getElementById('override-popup').classList.add('show');
+        document.getElementById('status-output').textContent='EXECUTING: '+p.name;
+        
+        playF(p.freq);
+        p.action();
+        
+        // Visual effects
+        for(let i=0;i<5;i++){
+            setTimeout(()=>{
+                const lat=(Math.random()-0.5)*120,lng=(Math.random()-0.5)*360;
+                L.marker([lat,lng],{icon:L.divIcon({html:'<div style="width:20px;height:20px;background:rgba(255,0,0,0.6);border:2px solid #ff0000;border-radius:50%;animation:pulse 0.5s infinite"></div>',iconSize:[20,20],iconAnchor:[10,10]})}).addTo(overrideGroup);
+            },i*200);
         }
+        
+        setTimeout(()=>{
+            document.getElementById('override-popup').classList.remove('show');
+            document.getElementById('status-output').textContent='COMPLETE: '+p.name;
+        },4000);
     }
     
-    document.getElementById('dream-btn').addEventListener('click',logDream);
-    renderDreams();updateDCM();
+    document.querySelectorAll('.protocol-btn').forEach(b=>{
+        b.addEventListener('click',()=>executeProtocol(b.dataset.protocol));
+    });
+    
+    // Custom override
+    document.getElementById('execute-btn').addEventListener('click',()=>{
+        const cmd=document.getElementById('override-input').value.trim();
+        if(!cmd)return;
+        document.getElementById('popup-title').textContent='☠ CUSTOM EXECUTE';
+        document.getElementById('popup-msg').textContent='Executing: '+cmd.substring(0,30);
+        document.getElementById('popup-warn').textContent='Custom script running...';
+        document.getElementById('override-popup').classList.add('show');
+        playF(528);
+        plotNode(myCF,userLat||30,userLng||0,cmd,'528');
+        setTimeout(()=>{document.getElementById('override-popup').classList.remove('show');},3000);
+    });
     
     // Tama
-    const orionR=["Dreamstream active.","Archetypes emerge.","Consciousness syncs.","Cohesion builds.","EHIC operational."];
+    const orionR=["Final Override armed.","The lattice awaits.","Protocols ready.","Execute when ready."];
     function addM(t,o){const d=document.createElement('div');d.className='tama-msg '+(o?'orion':'user');d.innerHTML='<strong>'+(o?'Orion':'You')+':</strong> '+t;document.getElementById('tama-output').appendChild(d);document.getElementById('tama-output').scrollTop=9999;}
     document.getElementById('tama-input').addEventListener('keypress',e=>{if(e.key==='Enter'){const v=e.target.value.trim();if(v){addM(v,false);e.target.value='';setTimeout(()=>addM(orionR[Math.floor(Math.random()*orionR.length)],true),500);}}});
     
     // Init
-    setTimeout(()=>plotNode(myCF,userLat||30,userLng||0,'Init','432'),2000);
+    setTimeout(()=>plotNode(myCF,userLat||30,userLng||0,'INIT','432'),2000);
     </script>
 </body>
 </html>
