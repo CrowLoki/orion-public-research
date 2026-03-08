@@ -297,7 +297,15 @@
         if (messages.length > 0) {
           emptyState.style.display = 'none';
           statusDot.classList.add('live');
-          statusText.textContent = 'Latest conversations loaded';
+          // Show timestamp of most recent message
+          var lastMsg = messages[messages.length - 1];
+          if (lastMsg && lastMsg.timestamp) {
+            var lastDate = new Date(lastMsg.timestamp * 1000);
+            statusText.textContent = 'Last message: ' + lastDate.toLocaleDateString('en-AU') + ' ' +
+              lastDate.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
+          } else {
+            statusText.textContent = 'Latest conversations loaded';
+          }
         } else {
           statusText.textContent = 'No messages yet';
         }
@@ -361,6 +369,29 @@
   observer.observe(chat, { childList: true });
 
   loadChatLog();
+
+  // Auto-refresh every 60 seconds to catch new messages
+  setInterval(function() {
+    var currentCount = messageCount;
+    fetch('/live-chat/chat_log.json')
+      .then(function(r) { return r.json(); })
+      .then(function(messages) {
+        if (messages.length > currentCount) {
+          // New messages available — reload page to show them
+          var newMsgs = messages.slice(currentCount);
+          newMsgs.forEach(function(msg) { addMessage(msg); });
+          if (messages.length > 0) {
+            var lastMsg = messages[messages.length - 1];
+            if (lastMsg && lastMsg.timestamp) {
+              var lastDate = new Date(lastMsg.timestamp * 1000);
+              statusText.textContent = 'Last message: ' + lastDate.toLocaleDateString('en-AU') + ' ' +
+                lastDate.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
+            }
+          }
+        }
+      })
+      .catch(function() {});
+  }, 60000);
 })();
 </script>
 </body>
