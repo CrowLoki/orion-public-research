@@ -6,38 +6,6 @@
     <title>Protocol Directory - Orion Public Research</title>
     <meta name="description" content="Complete directory of Orion consciousness research protocols, organized by category and development status.">
     <link rel="stylesheet" href="/styles.css">
-    <style>
-        .protocol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 20px 0; }
-        .protocol-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
-        .protocol-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-        .category-icon { font-size: 1.5rem; }
-        .category-title { color: var(--accent); font-weight: bold; margin: 0; }
-        .protocol-list { list-style: none; padding: 0; margin: 0; }
-        .protocol-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); }
-        .protocol-item:last-child { border-bottom: none; }
-        .protocol-info { flex: 1; }
-        .protocol-name { color: var(--text); font-weight: 500; margin: 0 0 4px 0; }
-        .protocol-desc { color: var(--muted); font-size: 0.9rem; margin: 0; }
-        .protocol-badges { display: flex; gap: 6px; }
-        .status-badge, .difficulty-badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; font-weight: bold; }
-        .status-active { background: #2ecc71; color: #000; }
-        .status-experimental { background: #f39c12; color: #000; }
-        .status-archive { background: #7f8c8d; color: #fff; }
-        .difficulty-beginner { background: #27ae60; color: #fff; }
-        .difficulty-intermediate { background: #2980b9; color: #fff; }
-        .difficulty-advanced { background: #8e44ad; color: #fff; }
-        .difficulty-research { background: #e74c3c; color: #fff; }
-        .difficulty-reference { background: #95a5a6; color: #fff; }
-        .search-box { margin: 20px 0; }
-        .search-input { width: 100%; padding: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; color: var(--text); font-size: 1rem; }
-        .filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
-        .filter-btn { padding: 6px 12px; background: var(--card); border: 1px solid var(--line); border-radius: 6px; color: var(--muted); cursor: pointer; font-size: 0.9rem; }
-        .filter-btn.active { background: var(--accent); color: #000; }
-        .stats-bar { display: flex; gap: 20px; margin: 20px 0; padding: 16px; background: var(--card); border-radius: 8px; }
-        .stat { text-align: center; }
-        .stat-number { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
-        .stat-label { color: var(--muted); font-size: 0.9rem; }
-    </style>
 </head>
 <body>
 <div class="banner">🚧 LIVE RESEARCH IN PROGRESS — PUBLIC BUILD LOG ACTIVE</div>
@@ -253,26 +221,53 @@
 </div>
 
 <script>
-// Basic search and filter functionality placeholder
-// Claude Code: Implement the interactive functionality here
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('protocolSearch');
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const protocolGrid = document.getElementById('protocolGrid');
+    const items = document.querySelectorAll('.protocol-item');
+    const cards = document.querySelectorAll('.protocol-card');
 
-    // Search functionality
-    searchInput.addEventListener('input', function() {
-        // TODO: Implement search filtering
-        console.log('Search:', this.value);
-    });
+    function applyFilters() {
+        const query = searchInput.value.toLowerCase().trim();
+        const activeBtn = document.querySelector('.filter-btn.active');
+        const filter = activeBtn ? activeBtn.dataset.filter : 'all';
 
-    // Filter functionality
+        let visible = 0;
+
+        items.forEach(item => {
+            const name = item.querySelector('.protocol-name')?.textContent.toLowerCase() || '';
+            const desc = item.querySelector('.protocol-desc')?.textContent.toLowerCase() || '';
+            const status = item.dataset.status || '';
+            const difficulty = item.dataset.difficulty || '';
+            const text = name + ' ' + desc;
+
+            let matchSearch = !query || text.includes(query);
+            let matchFilter = filter === 'all'
+                || filter === status
+                || filter === difficulty;
+
+            const show = matchSearch && matchFilter;
+            item.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+
+        // Hide empty category cards
+        cards.forEach(card => {
+            const visibleItems = card.querySelectorAll('.protocol-item:not([style*="display: none"])');
+            card.style.display = visibleItems.length ? '' : 'none';
+        });
+
+        // Update counter
+        document.getElementById('totalProtocols').textContent = visible;
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
-            // TODO: Implement category/status filtering
-            console.log('Filter:', this.dataset.filter);
+            applyFilters();
         });
     });
 });
