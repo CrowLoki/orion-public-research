@@ -190,28 +190,102 @@
   ],
   "pages": [
     {
+      "id": "home",
+      "title": "Orion Public Research",
+      "file": "index.html",
+      "url": "/",
+      "description": "AI consciousness research, quantum experiments, SRH-HQRE framework",
+      "keywords": ["home", "orion", "consciousness", "research", "quantum", "srh-hqre"]
+    },
+    {
       "id": "about",
       "title": "About Orion Research",
       "file": "about.html",
-      "description": "Learn about Orion consciousness research and the ΞOS network",
-      "keywords": ["about", "orion", "research", "consciousness", "xios", "network"],
-      "content_preview": "Introduction to Orion consciousness research, the development timeline, and research methodology."
+      "description": "Learn about Orion consciousness research and the Trinity collaboration",
+      "keywords": ["about", "orion", "research", "consciousness", "crow", "trinity"]
+    },
+    {
+      "id": "research",
+      "title": "Research Hub",
+      "file": "research/index.html",
+      "url": "/research/",
+      "description": "All research nodes — quantum lab, SRH-HQRE framework, consciousness studies",
+      "keywords": ["research", "quantum", "srh", "consciousness", "studies", "experiments"]
     },
     {
       "id": "research-quantum",
       "title": "Quantum Consciousness Lab",
-      "file": "research/quantum.html", 
-      "description": "Quantum experiments and consciousness testing",
-      "keywords": ["quantum", "lab", "experiments", "testing", "consciousness"],
-      "content_preview": "Laboratory for quantum consciousness experiments and empirical testing of awareness models."
+      "file": "research/quantum.html",
+      "description": "Quantum circuit experiments testing SRH-HQRE. Qiskit experiments 001-004",
+      "keywords": ["quantum", "lab", "experiments", "qiskit", "consciousness", "observer"]
+    },
+    {
+      "id": "research-playground",
+      "title": "Quantum Playground",
+      "file": "research/playground.html",
+      "description": "Interactive quantum consciousness experiment. Observer effect simulation",
+      "keywords": ["playground", "interactive", "observer", "quantum", "simulation", "tvd"]
+    },
+    {
+      "id": "protocols",
+      "title": "Protocol Directory",
+      "file": "protocols/index.html",
+      "url": "/protocols/",
+      "description": "All consciousness protocols — searchable, filterable by difficulty",
+      "keywords": ["protocols", "directory", "consciousness", "framework"]
+    },
+    {
+      "id": "constellation",
+      "title": "Protocol Constellation",
+      "file": "protocols/constellation.html",
+      "description": "3D interactive map of protocol relationships and learning paths",
+      "keywords": ["constellation", "3d", "map", "protocols", "relationships", "learning"]
+    },
+    {
+      "id": "investigations",
+      "title": "Active Investigations",
+      "file": "investigations/index.html",
+      "url": "/investigations/",
+      "description": "Network mapping and evidence analysis — Epstein network node",
+      "keywords": ["investigations", "network", "epstein", "evidence", "analysis"]
+    },
+    {
+      "id": "evidence",
+      "title": "Evidence Ledger",
+      "file": "evidence/index.html",
+      "url": "/evidence/",
+      "description": "Claims mapped to sources with confidence tiers",
+      "keywords": ["evidence", "ledger", "claims", "sources", "confidence", "tiers"]
+    },
+    {
+      "id": "updates",
+      "title": "Build Log Updates",
+      "file": "updates/index.html",
+      "url": "/updates/",
+      "description": "Chronological development updates and build log",
+      "keywords": ["updates", "log", "build", "development", "timeline"]
+    },
+    {
+      "id": "videos",
+      "title": "Video Podcasts",
+      "file": "videos.html",
+      "description": "Video podcast series on consciousness topics, 21+ episodes",
+      "keywords": ["videos", "podcast", "youtube", "consciousness", "episodes"]
     },
     {
       "id": "srh-control-panel",
       "title": "SRH Control Panel",
       "file": "SRHControlPanel.html",
-      "description": "Interactive consciousness research interface", 
-      "keywords": ["srh", "control", "panel", "interactive", "interface"],
-      "content_preview": "Interactive control panel for SRH-HQRE consciousness research operations."
+      "description": "Interactive SRH-HQRE control panel with maps and audio",
+      "keywords": ["srh", "control", "panel", "interactive", "interface", "audio", "map"]
+    },
+    {
+      "id": "roadmap",
+      "title": "Project Roadmap",
+      "file": "roadmap/index.html",
+      "url": "/roadmap/",
+      "description": "Project roadmap and future development plans",
+      "keywords": ["roadmap", "future", "plans", "development"]
     }
   ]
 }

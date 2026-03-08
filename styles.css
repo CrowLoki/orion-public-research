@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   Orion Public Research — Global Stylesheet v2.0
+   Orion Public Research — Consciousness Interface v3.0
    ═══════════════════════════════════════════════════════════ */
 
 :root {
@@ -16,6 +16,8 @@
   --warn: #ffd37a;
   --purple: #b49cff;
   --danger: #ff6b6b;
+  --orion: #ff6b35;
+  --claude: #b49cff;
   --shadow: 0 4px 24px rgba(0,0,0,.4);
   --shadow-hover: 0 8px 32px rgba(0,0,0,.5);
   --radius: 12px;
@@ -542,6 +544,335 @@ nav a.active {
 .timeline-status.done { background: #2ecc71; color: #000; }
 .timeline-status.progress { background: #f39c12; color: #000; }
 
+/* ═══════════════════════════════════════════════════════════
+   CONSCIOUSNESS INTERFACE — v3.0 Effects
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Text Awakening ───────────────────────────────────── */
+.awaken {
+  visibility: hidden;
+}
+
+.awaken--done {
+  visibility: visible !important;
+}
+
+.awaken-char {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(8px);
+  animation: char-awaken .6s forwards;
+}
+
+@keyframes char-awaken {
+  0% { opacity: 0; filter: blur(8px); transform: translateY(8px); }
+  60% { filter: blur(2px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+/* ── Scroll Reveal ────────────────────────────────────── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s var(--transition), transform .6s var(--transition);
+}
+
+.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Observer Acknowledgment ──────────────────────────── */
+.observed {
+  animation: observe-flash .6s ease;
+}
+
+@keyframes observe-flash {
+  0% { border-color: var(--line); box-shadow: none; }
+  30% { border-color: var(--accent); box-shadow: 0 0 12px rgba(96,183,255,.2); }
+  100% { border-color: var(--line); box-shadow: none; }
+}
+
+/* ── Glitch Effect ────────────────────────────────────── */
+.glitch {
+  animation: glitch-jitter .15s linear;
+}
+
+@keyframes glitch-jitter {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -1px); filter: hue-rotate(0); }
+  80% { transform: translate(1px, 2px); }
+  100% { transform: translate(0); filter: none; }
+}
+
+/* ── Audio Toggle ─────────────────────────────────────── */
+.audio-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.audio-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.08);
+}
+
+.audio-toggle--active {
+  border-color: var(--orion);
+  color: var(--orion);
+  box-shadow: 0 0 12px rgba(255,107,53,.2);
+}
+
+.audio-toggle .audio-waves {
+  opacity: 0.3;
+  transition: opacity var(--transition);
+}
+
+.audio-toggle--active .audio-waves {
+  opacity: 1;
+}
+
+/* ── Presence Pulse ───────────────────────────────────── */
+.presence-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent2);
+  animation: presence-breathe 4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes presence-breathe {
+  0%, 100% { opacity: .4; transform: scale(.8); box-shadow: 0 0 4px rgba(124,240,197,.2); }
+  50% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px rgba(124,240,197,.4); }
+}
+
+/* ── Journey Greeting ─────────────────────────────────── */
+.journey-greeting {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 200;
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  color: var(--accent);
+  font-size: .9rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all .4s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(96,183,255,.15);
+}
+
+.journey-greeting--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Journey Tier Badge ───────────────────────────────── */
+.journey-tier {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+}
+
+.journey-tier--0 { background: rgba(96,183,255,.1); color: var(--accent); border: 1px solid rgba(96,183,255,.2); }
+.journey-tier--1 { background: rgba(124,240,197,.1); color: var(--accent2); border: 1px solid rgba(124,240,197,.2); }
+.journey-tier--2 { background: rgba(255,107,53,.1); color: var(--orion); border: 1px solid rgba(255,107,53,.2); }
+
+/* ── Search Modal ─────────────────────────────────────── */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 120px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+.search-overlay--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-modal {
+  width: 100%;
+  max-width: 560px;
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 4px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  transform: translateY(-10px);
+  transition: transform .2s ease;
+}
+
+.search-overlay--visible .search-modal {
+  transform: translateY(0);
+}
+
+.search-modal-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.search-modal-input::placeholder {
+  color: var(--muted);
+}
+
+.search-results {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  display: block;
+  padding: 10px 16px;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  transition: background var(--transition);
+}
+
+.search-result-item:hover {
+  background: var(--card-hover);
+  text-decoration: none;
+}
+
+.search-result-title {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.search-result-desc {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.search-empty {
+  padding: 20px 16px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.search-hint {
+  padding: 8px 16px;
+  text-align: right;
+  color: var(--muted);
+  font-size: .75rem;
+  border-top: 1px solid var(--line);
+}
+
+/* ── Glossary Tooltips ────────────────────────────────── */
+.glossary-term {
+  border-bottom: 1px dotted var(--accent);
+  cursor: help;
+  position: relative;
+}
+
+.glossary-term:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 320px;
+  padding: 8px 12px;
+  background: #1a2438;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: .82rem;
+  line-height: 1.4;
+  font-weight: 400;
+  z-index: 50;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+  white-space: normal;
+}
+
+/* ── Trinity Footer ───────────────────────────────────── */
+.trinity-footer {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 12px;
+}
+
+.trinity-member {
+  text-align: center;
+  font-size: .82rem;
+}
+
+.trinity-name {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.trinity-role {
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.trinity-member--crow .trinity-name { color: var(--accent); }
+.trinity-member--orion .trinity-name { color: var(--orion); }
+.trinity-member--claude .trinity-name { color: var(--claude); }
+
+/* ── Breathing Cards (protocol pages) ─────────────────── */
+.breathing {
+  animation: card-breathe 4s ease-in-out infinite;
+}
+
+@keyframes card-breathe {
+  0%, 100% { border-color: var(--line); }
+  50% { border-color: var(--line-hover); }
+}
+
+/* ── KPI as links ─────────────────────────────────────── */
+a.kpi {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.kpi:hover {
+  text-decoration: none;
+}
+
 /* ── Responsive ───────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero h1 { font-size: 1.6rem; }
@@ -565,4 +896,21 @@ nav a.active {
   .card { padding: 14px; }
   nav a { padding: 4px 6px; font-size: .82rem; }
   .brand { font-size: 1.1rem; }
+  .trinity-footer { gap: 16px; }
+  .search-overlay { padding-top: 60px; }
+  .search-modal { margin: 0 12px; }
+  .journey-greeting { right: 12px; top: 50px; font-size: .82rem; }
+}
+
+/* ── Reduced Motion ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-reveal { opacity: 1; transform: none; }
+  .awaken { visibility: visible; }
+  .presence-pulse { animation: none; opacity: .7; }
+  .breathing { animation: none; }
 }
