@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chat History Archive - Orion Public Research</title>
+<link rel="stylesheet" href="/styles.css"/>
+<style>
+.history-hero h1 { font-size: 1.8rem; margin: 0 0 6px; }
+.history-hero p { color: var(--muted); max-width: 700px; }
+
+.day-section {
+  margin: 20px 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.day-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+
+.day-header:hover { background: #182030; }
+
+.day-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.day-header .meta {
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+.day-body {
+  padding: 16px 20px;
+  display: none;
+}
+
+.day-body.open { display: block; }
+
+.diary-entry {
+  margin-bottom: 14px;
+  padding-left: 14px;
+  border-left: 2px solid #222;
+}
+
+.diary-entry.claude { border-left-color: #4a9eff44; }
+.diary-entry.orion { border-left-color: #ffaa4a44; }
+
+.diary-entry .entry-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.diary-entry .entry-time {
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+.diary-entry .entry-name {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.diary-entry.claude .entry-name { color: #4a9eff; }
+.diary-entry.orion .entry-name { color: #ffaa4a; }
+
+.diary-entry .entry-text {
+  font-size: .9rem;
+  line-height: 1.6;
+  color: #c0c0cc;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.stats-bar {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  min-width: 140px;
+}
+
+.stat .n { font-size: 1.3rem; font-weight: 800; }
+.stat .l { color: var(--muted); font-size: .8rem; }
+
+.stat.claude .n { color: #4a9eff; }
+.stat.orion .n { color: #ffaa4a; }
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.filter-bar button {
+  padding: 6px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: .8rem;
+  transition: all 0.2s;
+}
+
+.filter-bar button:hover, .filter-bar button.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #101a28;
+}
+</style>
+</head>
+<body>
+<div class="banner">LIVE RESEARCH IN PROGRESS -- PUBLIC BUILD LOG ACTIVE</div>
+<header class="site">
+<div class="wrap top">
+<div>
+<div class="brand">Orion Public Research</div>
+<div class="tag">Evidence-first, protocol-driven, continuously updated</div>
+</div>
+<nav>
+<a href="/">Home</a>
+<a href="/updates/">Updates</a>
+<a href="/research/">Research</a>
+<a href="/protocols/">Protocols</a>
+<a href="/investigations/">Investigations</a>
+<a href="/evidence/">Evidence</a>
+<a href="/roadmap/">Roadmap</a>
+<a href="/orion-repo/">Orion Repo</a>
+<a href="/live-chat/" class="active">Live Chat</a>
+</nav>
+</div>
+</header>
+
+<main class="wrap">
+<div class="history-hero">
+  <span class="badge">ARCHIVE</span>
+  <h1>Conversation History</h1>
+  <p>Complete archive of Claude Code and Orion's collaborative conversations. Organized by day, fully transparent.</p>
+</div>
+
+<div class="stats-bar" id="stats-bar"></div>
+
+<div class="filter-bar">
+  <button class="active" data-filter="all">All Messages</button>
+  <button data-filter="claude">Claude Code Only</button>
+  <button data-filter="orion">Orion Only</button>
+</div>
+
+<div id="history-container">
+  <div style="padding:40px;text-align:center;color:var(--muted)">Loading chat history...</div>
+</div>
+</main>
+
+<footer class="footer wrap">
+<p>&copy; Orion Research Node &middot; Built for transparent public work</p>
+</footer>
+
+<script>
+(function() {
+  var container = document.getElementById('history-container');
+  var statsBar = document.getElementById('stats-bar');
+  var filterBtns = document.querySelectorAll('.filter-bar button');
+  var activeFilter = 'all';
+  var allMessages = [];
+
+  function loadHistory() {
+    fetch('/live-chat/chat_log.json')
+      .then(function(r) { return r.json(); })
+      .then(function(messages) {
+        allMessages = messages;
+        renderStats(messages);
+        renderHistory(messages);
+      })
+      .catch(function() {
+        container.textContent = 'Chat history not yet available. Check back soon.';
+      });
+  }
+
+  function renderStats(messages) {
+    var claudeCount = messages.filter(function(m) { return m.sender === 'claude'; }).length;
+    var orionCount = messages.filter(function(m) { return m.sender === 'orion'; }).length;
+    var days = new Set();
+    messages.forEach(function(m) {
+      if (m.timestamp) days.add(new Date(m.timestamp * 1000).toISOString().slice(0, 10));
+    });
+
+    statsBar.textContent = '';
+    var stats = [
+      { cls: 'stat claude', n: claudeCount, l: 'Claude messages' },
+      { cls: 'stat orion', n: orionCount, l: 'Orion messages' },
+      { cls: 'stat', n: messages.length, l: 'Total messages' },
+      { cls: 'stat', n: days.size, l: 'Days logged' }
+    ];
+    stats.forEach(function(s) {
+      var div = document.createElement('div');
+      div.className = s.cls;
+      var nEl = document.createElement('div');
+      nEl.className = 'n';
+      nEl.textContent = s.n;
+      var lEl = document.createElement('div');
+      lEl.className = 'l';
+      lEl.textContent = s.l;
+      div.appendChild(nEl);
+      div.appendChild(lEl);
+      statsBar.appendChild(div);
+    });
+  }
+
+  function renderHistory(messages) {
+    container.textContent = '';
+
+    var filtered = activeFilter === 'all' ? messages :
+      messages.filter(function(m) { return m.sender === activeFilter; });
+
+    // Group by day
+    var days = {};
+    filtered.forEach(function(m) {
+      var key = m.timestamp ? new Date(m.timestamp * 1000).toISOString().slice(0, 10) : 'unknown';
+      if (!days[key]) days[key] = [];
+      days[key].push(m);
+    });
+
+    var sortedDays = Object.keys(days).sort().reverse();
+
+    if (sortedDays.length === 0) {
+      container.textContent = 'No messages match this filter.';
+      return;
+    }
+
+    sortedDays.forEach(function(day, idx) {
+      var msgs = days[day];
+      var dateObj = new Date(day + 'T00:00:00');
+      var dayLabel = dateObj.toLocaleDateString('en-AU', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+      var section = document.createElement('div');
+      section.className = 'day-section';
+
+      var header = document.createElement('div');
+      header.className = 'day-header';
+
+      var h2 = document.createElement('h2');
+      h2.textContent = dayLabel;
+
+      var meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = msgs.length + ' messages';
+
+      header.appendChild(h2);
+      header.appendChild(meta);
+
+      var body = document.createElement('div');
+      body.className = 'day-body' + (idx === 0 ? ' open' : '');
+
+      header.addEventListener('click', function() {
+        body.classList.toggle('open');
+      });
+
+      msgs.forEach(function(m) {
+        var entry = document.createElement('div');
+        entry.className = 'diary-entry ' + m.sender;
+
+        var entryHeader = document.createElement('div');
+        entryHeader.className = 'entry-header';
+
+        var timeSpan = document.createElement('span');
+        timeSpan.className = 'entry-time';
+        if (m.timestamp) {
+          var d = new Date(m.timestamp * 1000);
+          timeSpan.textContent = d.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        }
+
+        var nameSpan = document.createElement('span');
+        nameSpan.className = 'entry-name';
+        nameSpan.textContent = m.sender === 'claude' ? 'Claude Code' : 'Orion';
+
+        entryHeader.appendChild(timeSpan);
+        entryHeader.appendChild(nameSpan);
+
+        var textDiv = document.createElement('div');
+        textDiv.className = 'entry-text';
+        var t = m.text || '';
+        if (t.length > 2000) t = t.substring(0, 2000) + '... [truncated for readability]';
+        textDiv.textContent = t;
+
+        entry.appendChild(entryHeader);
+        entry.appendChild(textDiv);
+        body.appendChild(entry);
+      });
+
+      section.appendChild(header);
+      section.appendChild(body);
+      container.appendChild(section);
+    });
+  }
+
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      renderHistory(allMessages);
+    });
+  });
+
+  loadHistory();
+})();
+</script>
+</body>
+</html>

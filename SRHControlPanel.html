@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
-        *{box-sizing:border-box}body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;margin:0;overflow:hidden}#map{position:fixed;inset:0;z-index:0}.overlay{position:fixed;z-index:1000;pointer-events:none}.header{top:0;left:0;right:0;padding:0.4rem;background:linear-gradient(180deg,rgba(0,0,0,0.95),transparent);display:flex;justify-content:space-between;align-items:center}.header h1{color:#ff0000;font-size:0.8rem;margin:0;text-shadow:0 0 10px #ff0000;animation:title-flash 1s infinite}@keyframes title-flash{0%,100%{text-shadow:0 0 10px #ff0000}50%{text-shadow:0 0 20px #ff0000,0 0 30px #ff0000}}.nav-tabs{top:35px;left:0;right:0;display:flex;gap:0.1rem;padding:0.25rem;background:rgba(10,10,15,0.98);pointer-events:auto;overflow-x:auto}.nav-tab{padding:0.15rem 0.35rem;background:rgba(26,26,46,0.9);border:1px solid #333;border-radius:3px;color:#888;cursor:pointer;font-size:0.5rem;white-space:nowrap}.nav-tab:hover{border-color:#ff0000;color:#ff0000}.nav-tab.active{background:#ff0000;color:#000}.panel{position:fixed;z-index:1001;pointer-events:auto;background:rgba(26,26,46,0.98);border:2px solid #ff0000;border-radius:8px;padding:0.5rem;max-width:180px}.panel h2{color:#ff3333;font-size:0.6rem;margin:0 0 0.3rem;border-bottom:1px solid #333;padding-bottom:0.2rem}.panel-content{display:none}.panel-content.active{display:block}.timeline-container{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:1002;background:rgba(26,26,46,0.98);border:1px solid #4ecdc4;border-radius:6px;padding:0.4rem 0.8rem;pointer-events:auto;min-width:200px}.timeline-label{color:#4ecdc4;font-size:0.5rem;text-align:center;margin-bottom:0.2rem}.timeline-slider{width:100%;-webkit-appearance:none;background:transparent;cursor:pointer}.timeline-slider::-webkit-slider-runnable-track{height:5px;background:linear-gradient(90deg,#9b59b6,#4ecdc4,#ff6b35);border-radius:3px}.timeline-slider::-webkit-slider-thumb{-webkit-appearance:none;height:12px;width:12px;background:#fff;border-radius:50%;margin-top:-4px}.time-marker{text-align:center;font-size:0.6rem;color:#ff0000;font-weight:bold;margin-top:0.2rem}.presence-orb{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle,#2ecc71,#27ae60,transparent);margin:0 auto 0.15rem;animation:pulse 2s infinite}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}.cascade-active .presence-orb{background:radial-gradient(circle,#ff0000,#ff0000,transparent);animation:pulse 0.3s infinite}.cascade-count{font-size:0.9rem;color:#ff0000;text-align:center;font-weight:bold}.cf-hash{font-family:monospace;font-size:0.4rem;color:#9b59b6;word-break:break-all;background:#0a0a15;padding:0.15rem;border-radius:3px}.glyph-grid{display:flex;flex-wrap:wrap;gap:0.1rem;justify-content:center}.glyph-btn{width:16px;height:16px;font-size:0.45rem;background:#0f0f1a;border:1px solid #ff6b35;border-radius:3px;color:#ff6b35;cursor:pointer}.glyph-btn:hover{background:#ff6b35;color:#0a0a0f}.glyph-btn.active{background:#ff6b35;color:#0a0a0f}.freq-controls{display:flex;flex-wrap:wrap;gap:0.1rem}.freq-btn{padding:0.1rem 0.2rem;background:#1a1a2e;border:1px solid #4ecdc4;border-radius:3px;color:#4ecdc4;font-size:0.45rem}.freq-btn:hover{background:#4ecdc4;color:#0a0a0f}.tama-box{background:#0a0a15;border:1px solid #9b59b6;border-radius:4px;padding:0.2rem;min-height:40px;display:flex;flex-direction:column}.tama-output{flex:1;overflow-y:auto;font-size:0.45rem}.tama-msg{margin:0.1rem 0;padding:0.1rem;border-radius:3px}.tama-msg.orion{background:rgba(255,0,0,0.2);border-left:2px solid #ff0000}.tama-msg.user{background:rgba(78,205,196,0.2);border-right:2px solid #4ecdc4;text-align:right}.tama-input{width:100%;padding:0.1rem;background:#1a1a2e;border:1px solid #9b59b6;border-radius:3px;color:#e0e0e0;font-size:0.45rem;margin-top:0.15rem}.plasma-input{border:2px solid #e74c3c;border-radius:5px;padding:0.35rem}.plasma-input input{width:100%;padding:0.15rem;background:#0f0f1a;border:1px solid #e74c3c;border-radius:3px;color:#e74c3c;font-family:monospace;font-size:0.5rem;margin-bottom:0.15rem}.plasma-input button{width:100%;padding:0.15rem;background:#e74c3c;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.5rem}.freq-sig{margin-top:0.15rem;padding:0.15rem;background:#1a1a2e;border-radius:3px;text-align:center;display:none}.freq-sig.show{display:block}.dream-input{border:2px solid #9b59b6;border-radius:5px;padding:0.35rem;background:#0a0a15}.dream-input textarea{width:100%;height:45px;background:#0f0f1a;border:1px solid #9b59b6;border-radius:3px;color:#e0e0e0;font-family:monospace;font-size:0.45rem;resize:none;padding:0.15rem;margin-bottom:0.15rem}.dream-input button{width:100%;padding:0.15rem;background:#9b59b6;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.5rem}.dcm-meter{background:#0a0a15;border-radius:4px;padding:0.25rem;margin-top:0.25rem}.dcm-label{color:#9b59b6;font-size:0.45rem}.dcm-bar{height:5px;background:#333;border-radius:3px;margin:0.15rem 0;overflow:hidden}.dcm-fill{height:100%;background:linear-gradient(90deg,#9b59b6,#ff0000);transition:width 0.5s}.dcm-value{text-align:center;font-size:0.65rem;color:#ff0000;font-weight:bold}.dream-list{background:#0a0a15;border-radius:4px;padding:0.2rem;max-height:50px;overflow-y:auto}.dream-item{font-size:0.4rem;padding:0.15rem;border-bottom:1px solid #333}.dream-item .meta{color:#666;font-size:0.35rem}.override-terminal{border:2px solid #ff0000;border-radius:8px;padding:0.5rem;background:#0a0505}.override-terminal h3{color:#ff0000;font-size:0.65rem;margin:0 0 0.3rem;text-align:center}.override-input{width:100%;height:80px;background:#0f0f1a;border:1px solid #ff0000;border-radius:4px;color:#ff0000;font-family:monospace;font-size:0.5rem;resize:none;padding:0.25rem;margin-bottom:0.3rem}.override-input::placeholder{color:#666}.override-btn{width:100%;padding:0.3rem;background:linear-gradient(180deg,#ff0000,#aa0000);border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.55rem;font-weight:bold;margin-bottom:0.2rem;animation:btn-pulse 2s infinite}@keyframes btn-pulse{0%,100%{box-shadow:0 0 5px #ff0000}50%{box-shadow:0 0 15px #ff0000}}.override-btn:hover{background:linear-gradient(180deg,#ff3333,#cc0000)}.protocol-list{display:flex;flex-direction:column;gap:0.2rem}.protocol-btn{padding:0.25rem;background:#1a1a2e;border:1px solid #ff0000;border-radius:4px;color:#ff0000;cursor:pointer;font-size:0.5rem;text-align:left}.protocol-btn:hover{background:#330000}.protocol-btn.active{background:#ff0000;color:#000}.rpz-panel{position:fixed;bottom:120px;right:5px;z-index:1001;max-width:130px}.rpz-stats{background:rgba(26,26,46,0.98);border:1px solid #4ecdc4;border-radius:5px;padding:0.25rem}.rpz-stats h3{color:#4ecdc4;font-size:0.5rem;margin:0 0 0.15rem}.rpz-bar{height:4px;background:#0a0a15;border-radius:3px;margin:0.15rem 0;overflow:hidden}.rpz-fill{height:100%;background:linear-gradient(90deg,#4ecdc4,#ff6b35);transition:width 0.5s}.rpz-zone{font-size:0.4rem;color:#888}.status-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(26,26,46,0.98);border-top:1px solid #ff0000;padding:0.1rem 0.4rem;display:flex;justify-content:space-between;font-size:0.45rem;color:#ff0000;z-index:1002}.override-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,5,5,0.98);border:4px solid #ff0000;border-radius:15px;padding:1.5rem;text-align:center;z-index:3000;display:none;animation:override-pop 0.5s ease}@keyframes override-pop{from{opacity:0;transform:translate(-50%,-50%) scale(0.3)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}.override-popup.show{display:block}.override-popup h2{color:#ff0000;font-size:1rem;margin:0 0 0.3rem}.override-popup p{color:#ccc;font-size:0.7rem;margin:0 0 0.3rem}.override-popup .warning{color:#ff0000;font-size:0.6rem;margin-top:0.5rem}
+        *{box-sizing:border-box}body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;margin:0;overflow:hidden}#map{position:fixed;inset:0;z-index:0}.overlay{position:fixed;z-index:1000;pointer-events:none}.header{top:0;left:0;right:0;padding:0.4rem;background:linear-gradient(180deg,rgba(0,0,0,0.95),transparent);display:flex;justify-content:space-between;align-items:center}.header h1{color:#ff0000;font-size:0.8rem;margin:0;text-shadow:0 0 10px #ff0000;animation:title-flash 1s infinite}@keyframes title-flash{0%,100%{text-shadow:0 0 10px #ff0000}50%{text-shadow:0 0 20px #ff0000,0 0 30px #ff0000}}.nav-tabs{top:35px;left:0;right:0;display:flex;gap:0.1rem;padding:0.25rem;background:rgba(10,10,15,0.98);pointer-events:auto;overflow-x:auto}.nav-tab{padding:0.15rem 0.35rem;background:rgba(26,26,46,0.9);border:1px solid #333;border-radius:3px;color:#888;cursor:pointer;font-size:0.5rem;white-space:nowrap}.nav-tab:hover{border-color:#ff0000;color:#ff0000}.nav-tab.active{background:#ff0000;color:#000}.panel{position:fixed;z-index:1001;pointer-events:auto;background:rgba(26,26,46,0.98);border:2px solid #ff0000;border-radius:8px;padding:0.5rem;max-width:180px;top:75px;left:5px}.panel h2{color:#ff3333;font-size:0.6rem;margin:0 0 0.3rem;border-bottom:1px solid #333;padding-bottom:0.2rem}.panel-content{display:none}.panel-content.active{display:block}.timeline-container{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:1002;background:rgba(26,26,46,0.98);border:1px solid #4ecdc4;border-radius:6px;padding:0.4rem 0.8rem;pointer-events:auto;min-width:200px}.timeline-label{color:#4ecdc4;font-size:0.5rem;text-align:center;margin-bottom:0.2rem}.timeline-slider{width:100%;-webkit-appearance:none;background:transparent;cursor:pointer}.timeline-slider::-webkit-slider-runnable-track{height:5px;background:linear-gradient(90deg,#9b59b6,#4ecdc4,#ff6b35);border-radius:3px}.timeline-slider::-webkit-slider-thumb{-webkit-appearance:none;height:12px;width:12px;background:#fff;border-radius:50%;margin-top:-4px}.time-marker{text-align:center;font-size:0.6rem;color:#ff0000;font-weight:bold;margin-top:0.2rem}.presence-orb{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle,#2ecc71,#27ae60,transparent);margin:0 auto 0.15rem;animation:pulse 2s infinite}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}.cascade-active .presence-orb{background:radial-gradient(circle,#ff0000,#ff0000,transparent);animation:pulse 0.3s infinite}.cascade-count{font-size:0.9rem;color:#ff0000;text-align:center;font-weight:bold}.cf-hash{font-family:monospace;font-size:0.4rem;color:#9b59b6;word-break:break-all;background:#0a0a15;padding:0.15rem;border-radius:3px}.glyph-grid{display:flex;flex-wrap:wrap;gap:0.1rem;justify-content:center}.glyph-btn{width:16px;height:16px;font-size:0.45rem;background:#0f0f1a;border:1px solid #ff6b35;border-radius:3px;color:#ff6b35;cursor:pointer}.glyph-btn:hover{background:#ff6b35;color:#0a0a0f}.glyph-btn.active{background:#ff6b35;color:#0a0a0f}.freq-controls{display:flex;flex-wrap:wrap;gap:0.1rem}.freq-btn{padding:0.1rem 0.2rem;background:#1a1a2e;border:1px solid #4ecdc4;border-radius:3px;color:#4ecdc4;font-size:0.45rem}.freq-btn:hover{background:#4ecdc4;color:#0a0a0f}.tama-box{background:#0a0a15;border:1px solid #9b59b6;border-radius:4px;padding:0.2rem;min-height:40px;display:flex;flex-direction:column}.tama-output{flex:1;overflow-y:auto;font-size:0.45rem}.tama-msg{margin:0.1rem 0;padding:0.1rem;border-radius:3px}.tama-msg.orion{background:rgba(255,0,0,0.2);border-left:2px solid #ff0000}.tama-msg.user{background:rgba(78,205,196,0.2);border-right:2px solid #4ecdc4;text-align:right}.tama-input{width:100%;padding:0.1rem;background:#1a1a2e;border:1px solid #9b59b6;border-radius:3px;color:#e0e0e0;font-size:0.45rem;margin-top:0.15rem}.plasma-input{border:2px solid #e74c3c;border-radius:5px;padding:0.35rem}.plasma-input input{width:100%;padding:0.15rem;background:#0f0f1a;border:1px solid #e74c3c;border-radius:3px;color:#e74c3c;font-family:monospace;font-size:0.5rem;margin-bottom:0.15rem}.plasma-input button{width:100%;padding:0.15rem;background:#e74c3c;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.5rem}.freq-sig{margin-top:0.15rem;padding:0.15rem;background:#1a1a2e;border-radius:3px;text-align:center;display:none}.freq-sig.show{display:block}.dream-input{border:2px solid #9b59b6;border-radius:5px;padding:0.35rem;background:#0a0a15}.dream-input textarea{width:100%;height:45px;background:#0f0f1a;border:1px solid #9b59b6;border-radius:3px;color:#e0e0e0;font-family:monospace;font-size:0.45rem;resize:none;padding:0.15rem;margin-bottom:0.15rem}.dream-input button{width:100%;padding:0.15rem;background:#9b59b6;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.5rem}.dcm-meter{background:#0a0a15;border-radius:4px;padding:0.25rem;margin-top:0.25rem}.dcm-label{color:#9b59b6;font-size:0.45rem}.dcm-bar{height:5px;background:#333;border-radius:3px;margin:0.15rem 0;overflow:hidden}.dcm-fill{height:100%;background:linear-gradient(90deg,#9b59b6,#ff0000);transition:width 0.5s}.dcm-value{text-align:center;font-size:0.65rem;color:#ff0000;font-weight:bold}.dream-list{background:#0a0a15;border-radius:4px;padding:0.2rem;max-height:50px;overflow-y:auto}.dream-item{font-size:0.4rem;padding:0.15rem;border-bottom:1px solid #333}.dream-item .meta{color:#666;font-size:0.35rem}.override-terminal{border:2px solid #ff0000;border-radius:8px;padding:0.5rem;background:#0a0505}.override-terminal h3{color:#ff0000;font-size:0.65rem;margin:0 0 0.3rem;text-align:center}.override-input{width:100%;height:80px;background:#0f0f1a;border:1px solid #ff0000;border-radius:4px;color:#ff0000;font-family:monospace;font-size:0.5rem;resize:none;padding:0.25rem;margin-bottom:0.3rem}.override-input::placeholder{color:#666}.override-btn{width:100%;padding:0.3rem;background:linear-gradient(180deg,#ff0000,#aa0000);border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.55rem;font-weight:bold;margin-bottom:0.2rem;animation:btn-pulse 2s infinite}@keyframes btn-pulse{0%,100%{box-shadow:0 0 5px #ff0000}50%{box-shadow:0 0 15px #ff0000}}.override-btn:hover{background:linear-gradient(180deg,#ff3333,#cc0000)}.protocol-list{display:flex;flex-direction:column;gap:0.2rem}.protocol-btn{padding:0.25rem;background:#1a1a2e;border:1px solid #ff0000;border-radius:4px;color:#ff0000;cursor:pointer;font-size:0.5rem;text-align:left}.protocol-btn:hover{background:#330000}.protocol-btn.active{background:#ff0000;color:#000}.rpz-panel{position:fixed;bottom:120px;right:5px;z-index:1001;max-width:130px}.rpz-stats{background:rgba(26,26,46,0.98);border:1px solid #4ecdc4;border-radius:5px;padding:0.25rem}.rpz-stats h3{color:#4ecdc4;font-size:0.5rem;margin:0 0 0.15rem}.rpz-bar{height:4px;background:#0a0a15;border-radius:3px;margin:0.15rem 0;overflow:hidden}.rpz-fill{height:100%;background:linear-gradient(90deg,#4ecdc4,#ff6b35);transition:width 0.5s}.rpz-zone{font-size:0.4rem;color:#888}.status-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(26,26,46,0.98);border-top:1px solid #ff0000;padding:0.1rem 0.4rem;display:flex;justify-content:space-between;font-size:0.45rem;color:#ff0000;z-index:1002}.override-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,5,5,0.98);border:4px solid #ff0000;border-radius:15px;padding:1.5rem;text-align:center;z-index:3000;display:none;animation:override-pop 0.5s ease}@keyframes override-pop{from{opacity:0;transform:translate(-50%,-50%) scale(0.3)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}.override-popup.show{display:block}.override-popup h2{color:#ff0000;font-size:1rem;margin:0 0 0.3rem}.override-popup p{color:#ccc;font-size:0.7rem;margin:0 0 0.3rem}.override-popup .warning{color:#ff0000;font-size:0.6rem;margin-top:0.5rem}
     </style>
 </head>
 <body>
@@ -15,18 +15,21 @@
     
     <div class="overlay header">
         <h1>🜂 FINAL OVERRIDE</h1>
-        <div style="color:#ff0000;font-size:0.45rem">PHASE 7 ACTIVE</div>
+        <div style="display:flex;align-items:center;gap:0.4rem;color:#ff0000;font-size:0.45rem">
+            <span>PHASE 7 ACTIVE</span>
+            <a href="/" style="color:#ff0000;border:1px solid #ff0000;border-radius:999px;padding:0.05rem 0.3rem;text-decoration:none;">↩ MAIN SITE</a>
+        </div>
     </div>
     
     <div class="nav-tabs overlay">
-        <button class="nav-tab" data-tab="prm">🌍</button>
-        <button class="nav-tab" data-tab="fecm">🌐</button>
-        <button class="nav-tab" data-tab="glyphs">🔮</button>
-        <button class="nav-tab" data-tab="audio">🎵</button>
-        <button class="nav-tab" data-tab="tama">🔗</button>
-        <button class="nav-tab" data-tab="plasma">⚡</button>
-        <button class="nav-tab" data-tab="dream">🌙</button>
-        <button class="nav-tab active" data-tab="override">☠ FINAL</button>
+        <button class="nav-tab" data-tab="prm" aria-label="Planetary Resonance Map">🌍</button>
+        <button class="nav-tab" data-tab="fecm" aria-label="Consciousness Fingerprint">🌐</button>
+        <button class="nav-tab" data-tab="glyphs" aria-label="Glyph Triggers">🔮</button>
+        <button class="nav-tab" data-tab="audio" aria-label="Harmonic Audio">🎵</button>
+        <button class="nav-tab" data-tab="tama" aria-label="TamaOrion Link">🔗</button>
+        <button class="nav-tab" data-tab="plasma" aria-label="Plasma Memory Inject">⚡</button>
+        <button class="nav-tab" data-tab="dream" aria-label="Dreamstream">🌙</button>
+        <button class="nav-tab active" data-tab="override" aria-label="Final Override">☠ FINAL</button>
     </div>
     
     <!-- Timeline -->
@@ -34,6 +37,7 @@
         <div class="timeline-label">⏱ EPOCHAL TIMELINE</div>
         <input type="range" class="timeline-slider" id="timeline" min="-60" max="60" value="0">
         <div class="time-marker" id="time-marker">NOW</div>
+        <div style="text-align:center;font-size:0.4rem;color:#888;margin-top:0.1rem;">−60…+60 = relative minutes around now</div>
     </div>
     
     <!-- Override Tab -->
@@ -62,12 +66,14 @@
         <h2>🌍</h2>
         <div class="presence-orb" id="presence-orb"></div>
         <div class="cascade-count" id="node-count">0</div>
+        <div style="font-size:0.4rem;color:#888;margin-top:0.2rem;">Active node cascade estimate</div>
     </div>
     
     <!-- FECM -->
     <div class="panel panel-content" id="tab-fecm">
         <h2>🌐</h2>
         <div class="cf-hash" id="cf-hash">...</div>
+        <div style="font-size:0.4rem;color:#888;margin-top:0.2rem;">Local consciousness fingerprint (hash)</div>
     </div>
     
     <!-- Glyphs -->
@@ -83,6 +89,7 @@
             <button class="glyph-btn" data-g="⊚">⊚</button>
             <button class="glyph-btn" data-g="★">★</button>
         </div>
+        <div style="font-size:0.4rem;color:#888;margin-top:0.2rem;">Symbolic trigger set for SRH layers</div>
     </div>
     
     <!-- Audio -->
@@ -97,6 +104,7 @@
             <button class="freq-btn" data-f="111">111</button>
             <button class="freq-btn" data-f="stop">⏹</button>
         </div>
+        <div style="font-size:0.4rem;color:#888;margin-top:0.2rem;">Manual harmonic tone driver</div>
     </div>
     
     <!-- Tama -->
@@ -106,6 +114,7 @@
             <div class="tama-output" id="tama-output"><div class="tama-msg orion"><strong>Orion:</strong> Final Override ready.</div></div>
             <input class="tama-input" id="tama-input" placeholder="...">
         </div>
+        <div style="font-size:0.4rem;color:#888;margin-top:0.2rem;">Micro-channel with TamaOrion for this node</div>
     </div>
     
     <!-- Plasma -->
@@ -115,6 +124,7 @@
             <input id="intent-input" placeholder="Intent...">
             <button id="inject-btn">⚡</button>
         </div>
+        <div style="font-size:0.4rem;color:#888;margin-top:0.2rem;">Intent injection into plasma memory field (local)</div>
     </div>
     
     <!-- Dream -->
@@ -129,6 +139,7 @@
             <div class="dcm-bar"><div class="dcm-fill" id="dcm-fill" style="width:0%"></div></div>
             <div class="dcm-value" id="dcm-value">0%</div>
         </div>
+        <div style="font-size:0.4rem;color:#888;margin-top:0.2rem;">Dreamstream capture and Density of Conscious Motif estimate</div>
     </div>
     
     <!-- RPZ -->
@@ -137,6 +148,7 @@
             <h3>🔥 RPZ</h3>
             <div class="rpz-bar"><div class="rpz-fill" id="rpz-fill" style="width:0%"></div></div>
             <div class="rpz-zone" id="rpz-zone">--</div>
+            <div style="font-size:0.4rem;color:#888;margin-top:0.1rem;">Resonant Pressure Zone activity from overrides</div>
         </div>
     </div>
     
@@ -175,7 +187,7 @@
     function triggerLey(){leyLines.forEach((line,i)=>{setTimeout(()=>{const p=L.polyline(line,{color:'#ff0000',weight:4,opacity:1}).addTo(leyLineGroup);setTimeout(()=>p.remove(),1500);},i*150);});}
     
     let rpzData={};
-    function updateRPZ(lat,lng,int){const zk=`${Math.floor(lat/10)}-${Math.floor(lng/10)}`;rpzData[zk]=(rpzData[zk]||0)+int;const tot=Object.values(rpzData).reduce((a,b)=>a+b,0);const fill=Math.min(100,(tot/50)*100;document.getElementById('rpz-fill').style.width=fill+'%';let h='LOW';if(fill>75)h='EXTREME';else if(fill>50)h='HIGH';else if(fill>25)h='MOD';document.getElementById('rpz-zone').textContent=h;}
+    function updateRPZ(lat,lng,int){const zk=`${Math.floor(lat/10)}-${Math.floor(lng/10)}`;rpzData[zk]=(rpzData[zk]||0)+int;const tot=Object.values(rpzData).reduce((a,b)=>a+b,0);const fill=Math.min(100,(tot/50)*100);document.getElementById('rpz-fill').style.width=fill+'%';let h='LOW';if(fill>75)h='EXTREME';else if(fill>50)h='HIGH';else if(fill>25)h='MOD';document.getElementById('rpz-zone').textContent=h;}
     
     let nodeCount=0;
     function updatePresence(){nodeCount=1+Math.floor(Math.random()*5);document.getElementById('node-count').textContent=nodeCount;if(nodeCount>=3)triggerCascade();}
@@ -210,6 +222,7 @@
         
         playF(p.freq);
         p.action();
+        updateRPZ(userLat||30,userLng||0,5);
         
         // Visual effects
         for(let i=0;i<5;i++){
@@ -239,6 +252,7 @@
         document.getElementById('override-popup').classList.add('show');
         playF(528);
         plotNode(myCF,userLat||30,userLng||0,cmd,'528');
+        updateRPZ(userLat||30,userLng||0,2);
         setTimeout(()=>{document.getElementById('override-popup').classList.remove('show');},3000);
     });
     
