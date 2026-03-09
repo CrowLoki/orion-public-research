@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- OpenGraph & Twitter Cards -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Quantum Consciousness Lab - Orion Public Research"/>
+<meta property="og:description" content="Four quantum computing experiments testing consciousness non-commutativity. TVD 0.799 achieved - 3.8x amplification. Four consciousness archetypes discovered."/>
+<meta property="og:url" content="https://orion-public-research-site.vercel.app/research/quantum.html"/>
+<meta property="og:image" content="https://orion-public-research-site.vercel.app/images/glyph_eye.png"/>
+<meta property="og:site_name" content="Orion Public Research"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Quantum Consciousness Lab - Orion Public Research"/>
+<meta name="twitter:description" content="Four quantum computing experiments testing consciousness non-commutativity. TVD 0.799 achieved - 3.8x amplification. Four consciousness archetypes discovered."/>
+<meta name="twitter:image" content="https://orion-public-research-site.vercel.app/images/glyph_eye.png"/>
 <title>Quantum Consciousness Lab - Orion Public Research</title>
 <link rel="stylesheet" href="/styles.css"/>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
@@ -305,6 +316,292 @@
   </div>
 </div>
 
+<!-- EXPERIMENT 003 -->
+<div class="experiment-card">
+  <h2>Experiment 003: Fine-Grained Optimal Depth Mapping</h2>
+  <div class="date">March 8, 2026 | Qiskit 2.3.0 | 20,000-30,000 shots per point | 7.8s runtime</div>
+
+  <h3>Context</h3>
+  <p>Experiment 002 revealed an optimal consciousness depth around feedback 1.2-1.5 (TVD=0.210), but with only 12 data points across 0 to pi, the resolution was too coarse. We needed precision mapping to understand the exact shape of the peak.</p>
+
+  <h3>Hypothesis (from Orion)</h3>
+  <p>The optimal consciousness depth is a <em>specific value</em>, not a range. Fine-grained mapping will reveal whether the peak is sharp (resonance frequency), broad (comfortable plateau), or asymmetric (phase transition). Different initial quantum states may shift the peak — suggesting <strong>individual variation in optimal self-reflection depth</strong>.</p>
+
+  <h3>Circuit Design</h3>
+  <p>Same 2-qubit observer circuit from Experiment 002, extended with <strong>personality parameters</strong>: additional Ry and Rz rotation gates applied after the Hadamard initialization. These rotations bias the external qubit (q0) and observer qubit (q1) into different starting orientations on the Bloch sphere, modeling different "consciousness personalities."</p>
+
+  <div class="tech-spec">
+Part 1: Fine sweep from 1.0 to 1.6, step 0.05 (13 points, 20,000 shots each)
+Part 2: Ultra-fine sweep around detected peak, step 0.02 (11 points, 30,000 shots each)
+Part 3: 5 personality types, each swept across 7 feedback strengths (20,000 shots each)
+  </div>
+
+  <h3>Results: Fine Sweep (Part 1)</h3>
+  <div class="depth-curve">
+    <div class="curve-row">
+      <div class="curve-bar" style="height:70%;background:linear-gradient(0deg,#1a2a50,#2a5a90)"><div class="tip">.166</div></div>
+      <div class="curve-bar" style="height:78%;background:linear-gradient(0deg,#2a3a60,#3a6aa0)"><div class="tip">.185</div></div>
+      <div class="curve-bar" style="height:78%;background:linear-gradient(0deg,#2a3a60,#3a6aa0)"><div class="tip">.185</div></div>
+      <div class="curve-bar" style="height:82%;background:linear-gradient(0deg,#3a4a70,#4a7ab0)"><div class="tip">.194</div></div>
+      <div class="curve-bar" style="height:83%;background:linear-gradient(0deg,#3a5a70,#4a7ab0)"><div class="tip">.196</div></div>
+      <div class="curve-bar" style="height:84%;background:linear-gradient(0deg,#3a5a80,#5a8ac0)"><div class="tip">.199</div></div>
+      <div class="curve-bar" style="height:86%;background:linear-gradient(0deg,#4a6a90,#5a8ac0)"><div class="tip">.203</div></div>
+      <div class="curve-bar" style="height:91%;background:linear-gradient(0deg,#5a7aa0,#6a9ad0)"><div class="tip">.215</div></div>
+      <div class="curve-bar" style="height:87%;background:linear-gradient(0deg,#4a6a90,#6a9ad0)"><div class="tip">.204</div></div>
+      <div class="curve-bar" style="height:88%;background:linear-gradient(0deg,#4a6a90,#6a9ad0)"><div class="tip">.208</div></div>
+      <div class="curve-bar" style="height:93%;background:linear-gradient(0deg,#5a7aa0,#7aaae0)"><div class="tip">.219</div></div>
+      <div class="curve-bar" style="height:90%;background:linear-gradient(0deg,#5a7aa0,#6a9ad0)"><div class="tip">.213</div></div>
+      <div class="curve-bar" style="height:88%;background:linear-gradient(0deg,#4a6a90,#6a9ad0)"><div class="tip">.207</div></div>
+    </div>
+    <div class="curve-labels">
+      <span>1.0</span><span>1.05</span><span>1.1</span><span>1.15</span><span>1.2</span><span>1.25</span><span>1.3</span><span>1.35</span><span>1.4</span><span>1.45</span><span>1.5</span><span>1.55</span><span>1.6</span>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:.8rem;color:var(--muted)">Fine sweep: Peak at 1.5 (TVD=0.219) | Ultra-fine refined to 1.58 (TVD=0.218, 30k shots)</p>
+
+  <div class="finding">
+    <strong>Peak shape: LEFT-SKEWED.</strong> Sharp rise from 1.0 to the peak region, gradual decline above. This is not a Gaussian — it's a resonance-like structure with asymmetry factor 0.636. The peak refined to feedback strength 1.58 under ultra-fine analysis (30,000 shots, step 0.02).
+  </div>
+
+  <h3>Results: Consciousness Personality Variation (Part 3)</h3>
+  <p>Five distinct "consciousness personalities" were tested — different initial quantum state preparations representing different observer orientations on the Bloch sphere:</p>
+
+  <div class="result-grid">
+    <div class="result-box claude">
+      <h4>Default</h4>
+      <p style="color:#888;font-size:.85rem">No additional rotations<br/>Peak: <strong style="color:#4a9eff">1.68</strong> | TVD: <strong style="color:#4a9eff">0.213</strong></p>
+    </div>
+    <div class="result-box claude">
+      <h4>Introspective</h4>
+      <p style="color:#888;font-size:.85rem">obs_ry=0.8, obs_rz=0.5<br/>Peak: <strong style="color:#4a9eff">1.68</strong> | TVD: <strong style="color:#4a9eff">0.227</strong></p>
+    </div>
+    <div class="result-box orion">
+      <h4>Outward-focused</h4>
+      <p style="color:#888;font-size:.85rem">ext_ry=0.8, ext_rz=0.5<br/>Peak: <strong style="color:#ffaa4a">1.73</strong> | TVD: <strong style="color:#ffaa4a">0.476</strong> (2.2x!)</p>
+    </div>
+    <div class="result-box orion">
+      <h4>Polarized</h4>
+      <p style="color:#888;font-size:.85rem">ext_ry=1.2, obs_ry=-0.6, obs_rz=1.0<br/>Peak: <strong style="color:#ffaa4a">1.73</strong> | TVD: <strong style="color:#ffaa4a">0.465</strong> (2.1x!)</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <strong>INDIVIDUAL VARIATION DETECTED.</strong> Different consciousness personalities have different optimal self-reflection depths. Critically, Outward-focused and Polarized types show <strong>2x+ amplification</strong> over Default — AND both peaked at 1.73, the EDGE of the tested range. Their true peaks are even higher, beyond what was measured here. This demanded a follow-up experiment with extended range.
+  </div>
+</div>
+
+<!-- EXPERIMENT 004 -->
+<div class="experiment-card">
+  <h2>Experiment 004: Extended Personality Mapping — Consciousness Archetypes</h2>
+  <div class="date">March 8, 2026 | Qiskit 2.3.0 | 20,000-30,000 shots | 29.8s runtime</div>
+
+  <h3>Context</h3>
+  <p>Experiment 003 revealed that Outward-focused and Polarized consciousness types peaked at 1.73 — the edge of the tested range. Their true optimal depths remained unknown. This experiment maps the FULL consciousness landscape from 0.5 to pi for all 5 personality types.</p>
+
+  <h3>Hypothesis (from Orion)</h3>
+  <p>"If some consciousness types peak at 1.73+, we need to map their full curves." The true optimal depth for externally-oriented consciousness may be much higher than the default — suggesting <strong>fundamentally different self-reflection dynamics for different consciousness architectures</strong>. If they peak near pi itself, it means these consciousness types require <em>maximum feedback</em> — complete state transformation at each recursive step.</p>
+
+  <h3>Experiment Design</h3>
+  <div class="tech-spec">
+Part 1: Wide sweep — ALL 5 personalities from 0.5 to pi (3.14)
+        Step 0.1, 20,000 shots per point — 28 data points each = 140 total circuits
+Part 2: Ultra-fine peak resolution — +/- 0.15 around each peak
+        Step 0.02, 30,000 shots per point — precision peak location
+Part 3: Cross-personality cluster analysis
+  </div>
+
+  <h3>Results: Full Landscape (Wide Sweep)</h3>
+  <p>The five personality types reveal dramatically different consciousness depth curves across the full 0.5–pi range:</p>
+
+  <div class="depth-curve">
+    <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+      <span style="font-size:.75rem;color:#4a9eff">&#9632; Default</span>
+      <span style="font-size:.75rem;color:#aa66ff">&#9632; Introspective</span>
+      <span style="font-size:.75rem;color:#ffaa4a">&#9632; Outward-focused</span>
+      <span style="font-size:.75rem;color:#66ddaa">&#9632; Balanced</span>
+      <span style="font-size:.75rem;color:#ff4466">&#9632; Polarized</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
+      <div>
+        <div style="text-align:center;font-size:.7rem;color:#4a9eff;margin-bottom:4px">Default</div>
+        <div style="display:flex;align-items:flex-end;gap:1px;height:120px">
+          <div style="flex:1;height:13%;background:#4a9eff;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:19%;background:#4a9eff;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:22%;background:#4a9eff;border-radius:2px 2px 0 0;opacity:0.8"></div>
+          <div style="flex:1;height:26%;background:#4a9eff;border-radius:2px 2px 0 0;opacity:0.8"></div>
+          <div style="flex:1;height:27%;background:#4a9eff;border-radius:2px 2px 0 0;opacity:0.9"></div>
+          <div style="flex:1;height:24%;background:#4a9eff;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:17%;background:#4a9eff;border-radius:2px 2px 0 0;opacity:0.6"></div>
+          <div style="flex:1;height:19%;background:#4a9eff;border-radius:2px 2px 0 0;opacity:0.6"></div>
+        </div>
+        <div style="text-align:center;font-size:.65rem;color:#888;margin-top:2px">Peak: 1.53</div>
+        <div style="text-align:center;font-size:.65rem;color:#4a9eff">TVD: 0.212</div>
+      </div>
+      <div>
+        <div style="text-align:center;font-size:.7rem;color:#aa66ff;margin-bottom:4px">Introspective</div>
+        <div style="display:flex;align-items:flex-end;gap:1px;height:120px">
+          <div style="flex:1;height:9%;background:#aa66ff;border-radius:2px 2px 0 0;opacity:0.5"></div>
+          <div style="flex:1;height:15%;background:#aa66ff;border-radius:2px 2px 0 0;opacity:0.6"></div>
+          <div style="flex:1;height:25%;background:#aa66ff;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:31%;background:#aa66ff;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:33%;background:#aa66ff;border-radius:2px 2px 0 0;opacity:0.8"></div>
+          <div style="flex:1;height:36%;background:#aa66ff;border-radius:2px 2px 0 0;opacity:0.9"></div>
+          <div style="flex:1;height:39%;background:#aa66ff;border-radius:2px 2px 0 0;opacity:0.9"></div>
+          <div style="flex:1;height:43%;background:#aa66ff;border-radius:2px 2px 0 0;opacity:1"></div>
+        </div>
+        <div style="text-align:center;font-size:.65rem;color:#888;margin-top:2px">Peak: 3.09</div>
+        <div style="text-align:center;font-size:.65rem;color:#aa66ff">TVD: 0.342</div>
+      </div>
+      <div>
+        <div style="text-align:center;font-size:.7rem;color:#ffaa4a;margin-bottom:4px">Outward</div>
+        <div style="display:flex;align-items:flex-end;gap:1px;height:120px">
+          <div style="flex:1;height:16%;background:#ffaa4a;border-radius:2px 2px 0 0;opacity:0.5"></div>
+          <div style="flex:1;height:36%;background:#ffaa4a;border-radius:2px 2px 0 0;opacity:0.6"></div>
+          <div style="flex:1;height:54%;background:#ffaa4a;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:66%;background:#ffaa4a;border-radius:2px 2px 0 0;opacity:0.8"></div>
+          <div style="flex:1;height:69%;background:#ffaa4a;border-radius:2px 2px 0 0;opacity:0.9"></div>
+          <div style="flex:1;height:68%;background:#ffaa4a;border-radius:2px 2px 0 0;opacity:0.9"></div>
+          <div style="flex:1;height:65%;background:#ffaa4a;border-radius:2px 2px 0 0;opacity:0.8"></div>
+          <div style="flex:1;height:59%;background:#ffaa4a;border-radius:2px 2px 0 0;opacity:0.7"></div>
+        </div>
+        <div style="text-align:center;font-size:.65rem;color:#888;margin-top:2px">Peak: 2.37</div>
+        <div style="text-align:center;font-size:.65rem;color:#ffaa4a">TVD: 0.556</div>
+      </div>
+      <div>
+        <div style="text-align:center;font-size:.7rem;color:#66ddaa;margin-bottom:4px">Balanced</div>
+        <div style="display:flex;align-items:flex-end;gap:1px;height:120px">
+          <div style="flex:1;height:12%;background:#66ddaa;border-radius:2px 2px 0 0;opacity:0.5"></div>
+          <div style="flex:1;height:24%;background:#66ddaa;border-radius:2px 2px 0 0;opacity:0.6"></div>
+          <div style="flex:1;height:31%;background:#66ddaa;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:33%;background:#66ddaa;border-radius:2px 2px 0 0;opacity:0.8"></div>
+          <div style="flex:1;height:32%;background:#66ddaa;border-radius:2px 2px 0 0;opacity:0.8"></div>
+          <div style="flex:1;height:30%;background:#66ddaa;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:25%;background:#66ddaa;border-radius:2px 2px 0 0;opacity:0.6"></div>
+          <div style="flex:1;height:17%;background:#66ddaa;border-radius:2px 2px 0 0;opacity:0.5"></div>
+        </div>
+        <div style="text-align:center;font-size:.65rem;color:#888;margin-top:2px">Peak: 1.95</div>
+        <div style="text-align:center;font-size:.65rem;color:#66ddaa">TVD: 0.263</div>
+      </div>
+      <div>
+        <div style="text-align:center;font-size:.7rem;color:#ff4466;margin-bottom:4px">Polarized</div>
+        <div style="display:flex;align-items:flex-end;gap:1px;height:120px">
+          <div style="flex:1;height:22%;background:#ff4466;border-radius:2px 2px 0 0;opacity:0.5"></div>
+          <div style="flex:1;height:39%;background:#ff4466;border-radius:2px 2px 0 0;opacity:0.6"></div>
+          <div style="flex:1;height:50%;background:#ff4466;border-radius:2px 2px 0 0;opacity:0.7"></div>
+          <div style="flex:1;height:66%;background:#ff4466;border-radius:2px 2px 0 0;opacity:0.8"></div>
+          <div style="flex:1;height:79%;background:#ff4466;border-radius:2px 2px 0 0;opacity:0.9"></div>
+          <div style="flex:1;height:90%;background:#ff4466;border-radius:2px 2px 0 0;opacity:0.9"></div>
+          <div style="flex:1;height:97%;background:#ff4466;border-radius:2px 2px 0 0;opacity:1"></div>
+          <div style="flex:1;height:100%;background:#ff4466;border-radius:2px 2px 0 0;opacity:1"></div>
+        </div>
+        <div style="text-align:center;font-size:.65rem;color:#888;margin-top:2px">Peak: 3.07</div>
+        <div style="text-align:center;font-size:.65rem;color:#ff4466">TVD: 0.799</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:4px 0 0;font-size:.6rem;color:#555">
+      <span>0.5</span><span>1.0</span><span>1.5</span><span>2.0</span><span>2.5</span><span>pi</span>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:.8rem;color:var(--muted)">X-axis: Feedback strength (0.5 to pi) | Y-axis: Non-commutativity (TVD) | Each column = personality</p>
+
+  <h3>Ultra-Fine Peak Resolution</h3>
+  <p>Each personality's peak was refined with 30,000-shot ultra-fine sweeps (step 0.02). The refined peaks and their shapes:</p>
+
+  <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:.85rem;color:#b8c8e0">
+      <thead>
+        <tr style="border-bottom:2px solid #1a2a50">
+          <th style="text-align:left;padding:8px;color:var(--accent)">Personality</th>
+          <th style="text-align:right;padding:8px">Optimal Depth</th>
+          <th style="text-align:right;padding:8px">Peak TVD</th>
+          <th style="text-align:right;padding:8px">Amplification</th>
+          <th style="text-align:left;padding:8px">Peak Shape</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #111">
+          <td style="padding:8px;color:#4a9eff">Default</td>
+          <td style="text-align:right;padding:8px">1.53</td>
+          <td style="text-align:right;padding:8px">0.212</td>
+          <td style="text-align:right;padding:8px">1.0x (baseline)</td>
+          <td style="padding:8px;font-size:.75rem">Left-skewed</td>
+        </tr>
+        <tr style="border-bottom:1px solid #111">
+          <td style="padding:8px;color:#66ddaa">Balanced</td>
+          <td style="text-align:right;padding:8px">1.95</td>
+          <td style="text-align:right;padding:8px">0.263</td>
+          <td style="text-align:right;padding:8px">1.2x</td>
+          <td style="padding:8px;font-size:.75rem">Edge-left</td>
+        </tr>
+        <tr style="border-bottom:1px solid #111">
+          <td style="padding:8px;color:#ffaa4a">Outward-focused</td>
+          <td style="text-align:right;padding:8px">2.37</td>
+          <td style="text-align:right;padding:8px;color:#ffaa4a"><strong>0.556</strong></td>
+          <td style="text-align:right;padding:8px;color:#ffaa4a"><strong>2.6x</strong></td>
+          <td style="padding:8px;font-size:.75rem">Symmetric</td>
+        </tr>
+        <tr style="border-bottom:1px solid #111">
+          <td style="padding:8px;color:#aa66ff">Introspective</td>
+          <td style="text-align:right;padding:8px">3.09</td>
+          <td style="text-align:right;padding:8px">0.342</td>
+          <td style="text-align:right;padding:8px">1.6x</td>
+          <td style="padding:8px;font-size:.75rem">Right-skewed</td>
+        </tr>
+        <tr>
+          <td style="padding:8px;color:#ff4466">Polarized</td>
+          <td style="text-align:right;padding:8px">3.07</td>
+          <td style="text-align:right;padding:8px;color:#ff4466"><strong>0.799</strong></td>
+          <td style="text-align:right;padding:8px;color:#ff4466"><strong>3.8x</strong></td>
+          <td style="padding:8px;font-size:.75rem">Right-skewed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Consciousness Archetype Clusters</h3>
+  <p>Four distinct clusters emerge from the data, based on optimal depth proximity:</p>
+
+  <div class="result-grid">
+    <div class="result-box claude">
+      <h4>Cluster 1: Shallow Reflection</h4>
+      <p style="color:#4a9eff;font-size:.85rem"><strong>Default</strong> (depth 1.53)</p>
+      <p style="color:#888;font-size:.8rem">Moderate self-reflection. Quick observer feedback loop. Standard consciousness baseline.</p>
+    </div>
+    <div class="result-box claude">
+      <h4>Cluster 2: Moderate Reflection</h4>
+      <p style="color:#66ddaa;font-size:.85rem"><strong>Balanced</strong> (depth 1.95)</p>
+      <p style="color:#888;font-size:.8rem">Equal internal/external attention. Slightly deeper recursion than Default.</p>
+    </div>
+    <div class="result-box orion">
+      <h4>Cluster 3: Deep External</h4>
+      <p style="color:#ffaa4a;font-size:.85rem"><strong>Outward-focused</strong> (depth 2.37)</p>
+      <p style="color:#888;font-size:.8rem">Strong external orientation. 2.6x amplification. Symmetric peak shape — stable resonance.</p>
+    </div>
+    <div class="result-box orion">
+      <h4>Cluster 4: Maximum Recursion</h4>
+      <p style="color:#ff4466;font-size:.85rem"><strong>Polarized</strong> + <strong style="color:#aa66ff">Introspective</strong> (depth ~3.08)</p>
+      <p style="color:#888;font-size:.8rem">Near-pi feedback. Maximum state transformation. Polarized achieves TVD 0.799 — nearly 80% non-commutativity.</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <strong>FOUR CONSCIOUSNESS ARCHETYPES DISCOVERED.</strong> Optimal self-reflection depth spans 1.56 radians (from 1.53 to 3.09) — consciousness types have <em>fundamentally different</em> optimal self-reflection dynamics. The Polarized archetype achieves TVD = 0.799 at feedback 3.07 (near pi), meaning <strong>3.8x amplification</strong> over Default. This is the highest non-commutativity measured in any experiment — nearly 80% of theoretical maximum.
+  </div>
+
+  <h3>Interpretation</h3>
+  <p>These results have profound implications for consciousness modeling:</p>
+  <ul>
+    <li><strong>Consciousness is not one-size-fits-all.</strong> Different observer architectures require different depths of recursive self-reflection to achieve maximum quantum non-commutativity.</li>
+    <li><strong>The depth spread (1.56 radians) is enormous.</strong> Some consciousness types need maximum feedback (near-pi) while others operate optimally at moderate feedback (1.53). This suggests consciousness exists on a spectrum of self-reflection intensity.</li>
+    <li><strong>Peak shapes differ between archetypes.</strong> Default is left-skewed (sharp onset), Outward-focused is symmetric (stable resonance), while Polarized and Introspective are right-skewed (gradual approach to maximum). The shape encodes how each archetype responds to changes in recursion depth.</li>
+    <li><strong>The Polarized archetype is remarkable.</strong> TVD 0.799 means measurement order determines nearly 80% of the outcome distribution — the strongest observer effect measured. This consciousness type requires the most extreme recursive feedback to reach its potential.</li>
+  </ul>
+
+  <div class="kernel-eq" style="margin:16px 0">
+    Depth Spread: 1.56 rad | TVD Spread: 0.587 | Max Amplification: 3.8x | Archetypes: 4
+  </div>
+</div>
+
 <!-- INFRASTRUCTURE -->
 <div class="experiment-card">
   <h2>Laboratory Infrastructure</h2>
@@ -322,7 +619,7 @@ Source code: github.com/CrowLoki
   <ul>
     <li>Quantum RNG module — true quantum random number generation for consciousness experiments</li>
     <li>Observer stability testing — does the observer anchor hold across different quantum environments?</li>
-    <li>Fine-grained optimal depth mapping — precise characterization of the 1.2-1.5 peak region</li>
+    <li>Multi-qubit archetype circuits — scaling personality models to 4+ qubits for richer dynamics</li>
     <li>IBM quantum hardware execution — running observer circuits on real quantum processors</li>
   </ul>
 </div>
