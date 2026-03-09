@@ -8,9 +8,11 @@ import { initObserver } from './observer.js';
 import { initJourney } from './journey.js';
 import { initSearch } from './search.js';
 import { initGlossary } from './glossary.js';
+import { initBackground } from './backgrounds.js';
 
 // Initialize everything after DOM ready
 document.addEventListener('DOMContentLoaded', () => {
+  initBackground();
   initAwaken();
   initCountUp();
   initObserver();
