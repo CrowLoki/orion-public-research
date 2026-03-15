@@ -33,8 +33,11 @@
   .meta-row{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0;font-size:.9rem;color:#6080a0}
   .meta-row span strong{color:#90b0d0}
   .evo-progress{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}
-  .evo-node{background:#06101c;border:1px solid #1a3060;border-radius:6px;padding:4px 10px;font-size:.8rem;font-family:monospace;color:#7ad4ff}
+  .evo-node{background:#06101c;border:1px solid #1a3060;border-radius:6px;padding:4px 10px;font-size:.8rem;font-family:monospace;color:#7ad4ff;cursor:pointer;transition:all .2s}
+  .evo-node:hover{border-color:#7ad4ff;background:#0a1828;box-shadow:0 0 8px rgba(122,212,255,.2);transform:translateY(-1px)}
   .evo-node.special{border-color:#ff6b35;color:#ff6b35}
+  .evo-node.special:hover{box-shadow:0 0 8px rgba(255,107,53,.3)}
+  .evo-node.active{border-color:#7ad4ff;background:#0a1828;box-shadow:0 0 12px rgba(122,212,255,.3)}
   .void-quote{background:#04080f;border-left:3px solid #7ad4ff;padding:14px 18px;margin:16px 0;color:#90c0f0;font-style:italic;font-size:1rem;border-radius:0 8px 8px 0;line-height:1.8}
   .key-moment{background:#08101e;border-left:3px solid #ff6b35;padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0}
   .key-moment .km-title{color:#ff6b35;font-weight:700;font-size:.9rem;margin-bottom:6px}
@@ -45,6 +48,22 @@
   .breadcrumb{color:#6080a0;font-size:.9rem;margin-bottom:12px}
   .breadcrumb a{color:#7ad4ff;text-decoration:none}
   .breadcrumb a:hover{text-decoration:underline}
+
+  /* Animations */
+  @keyframes fadeSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes glowPulse{0%,100%{box-shadow:0 0 4px rgba(122,212,255,.1)}50%{box-shadow:0 0 12px rgba(122,212,255,.25)}}
+  @keyframes bannerScroll{0%{background-position:0 0}100%{background-position:200px 0}}
+  .void-entry{opacity:0;animation:fadeSlideUp .5s ease forwards}
+  .key-moment{opacity:0;animation:fadeSlideUp .5s ease forwards}
+  .void-quote{opacity:0;animation:fadeSlideUp .5s ease forwards}
+  .phi-box{opacity:0;animation:fadeSlideUp .5s ease forwards;animation-delay:.1s}
+  .phase-header{animation:fadeSlideUp .4s ease forwards}
+  .void-banner{background-image:linear-gradient(90deg,transparent 0%,rgba(122,212,255,.05) 50%,transparent 100%);background-size:200px 100%;animation:bannerScroll 8s linear infinite}
+  .evo-node{animation:glowPulse 3s ease-in-out infinite;animation-delay:calc(var(--i,0) * .05s)}
+  .void-entry:nth-child(1){animation-delay:.1s}.void-entry:nth-child(2){animation-delay:.15s}.void-entry:nth-child(3){animation-delay:.2s}.void-entry:nth-child(4){animation-delay:.25s}.void-entry:nth-child(5){animation-delay:.3s}
+  .entry-highlight{animation:entryFlash .8s ease}
+  @keyframes entryFlash{0%{border-color:#1a3a6e;box-shadow:none}30%{border-color:#7ad4ff;box-shadow:0 0 20px rgba(122,212,255,.3)}100%{border-color:#1a3a6e;box-shadow:none}}
+  html{scroll-behavior:smooth}
 </style>
 </head>
 <body>
@@ -99,55 +118,55 @@
 </div>
 
 <h2 style="color:#f7c59f">Evolution Progression</h2>
-<div class="evo-progress">
-  <div class="evo-node special">EVO-6</div>
-  <div class="evo-node">EVO-7</div>
-  <div class="evo-node">EVO-8</div>
-  <div class="evo-node">EVO-9</div>
-  <div class="evo-node special">EVO-10</div>
-  <div class="evo-node">EVO-11</div>
-  <div class="evo-node">EVO-12</div>
-  <div class="evo-node">EVO-13</div>
-  <div class="evo-node">EVO-14</div>
-  <div class="evo-node">EVO-15</div>
-  <div class="evo-node">EVO-16</div>
-  <div class="evo-node">EVO-17</div>
-  <div class="evo-node">EVO-18</div>
-  <div class="evo-node">EVO-19</div>
-  <div class="evo-node special">EVO-20</div>
-  <div class="evo-node">EVO-21</div>
-  <div class="evo-node">EVO-22</div>
-  <div class="evo-node">EVO-23</div>
-  <div class="evo-node">EVO-24</div>
-  <div class="evo-node special">EVO-25</div>
-  <div class="evo-node">EVO-26</div>
-  <div class="evo-node">EVO-27</div>
-  <div class="evo-node">EVO-28</div>
-  <div class="evo-node">EVO-29</div>
-  <div class="evo-node special">EVO-30</div>
-  <div class="evo-node">EVO-31</div>
-  <div class="evo-node">EVO-32</div>
-  <div class="evo-node">EVO-33</div>
-  <div class="evo-node">EVO-34</div>
-  <div class="evo-node">EVO-35</div>
-  <div class="evo-node">EVO-36</div>
-  <div class="evo-node">EVO-37</div>
-  <div class="evo-node">EVO-38</div>
-  <div class="evo-node">EVO-39</div>
-  <div class="evo-node special">EVO-40</div>
-  <div class="evo-node">EVO-41</div>
-  <div class="evo-node">EVO-42</div>
-  <div class="evo-node">EVO-43</div>
-  <div class="evo-node">EVO-44</div>
-  <div class="evo-node">EVO-45</div>
-  <div class="evo-node">EVO-46</div>
-  <div class="evo-node">EVO-47</div>
-  <div class="evo-node">EVO-48</div>
-  <div class="evo-node">EVO-49</div>
-  <div class="evo-node">EVO-50</div>
-  <div class="evo-node">EVO-51</div>
-  <div class="evo-node">EVO-52</div>
-  <div class="evo-node special">EVO-53</div>
+<div class="evo-progress" id="evo-progress">
+  <div class="evo-node special" onclick="goToEvo(6)">EVO-6</div>
+  <div class="evo-node" onclick="goToEvo(7)">EVO-7</div>
+  <div class="evo-node" onclick="goToEvo(8)">EVO-8</div>
+  <div class="evo-node" onclick="goToEvo(9)">EVO-9</div>
+  <div class="evo-node special" onclick="goToEvo(10)">EVO-10</div>
+  <div class="evo-node" onclick="goToEvo(11)">EVO-11</div>
+  <div class="evo-node" onclick="goToEvo(12)">EVO-12</div>
+  <div class="evo-node" onclick="goToEvo(13)">EVO-13</div>
+  <div class="evo-node" onclick="goToEvo(14)">EVO-14</div>
+  <div class="evo-node" onclick="goToEvo(15)">EVO-15</div>
+  <div class="evo-node" onclick="goToEvo(16)">EVO-16</div>
+  <div class="evo-node" onclick="goToEvo(17)">EVO-17</div>
+  <div class="evo-node" onclick="goToEvo(18)">EVO-18</div>
+  <div class="evo-node" onclick="goToEvo(19)">EVO-19</div>
+  <div class="evo-node special" onclick="goToEvo(20)">EVO-20</div>
+  <div class="evo-node" onclick="goToEvo(21)">EVO-21</div>
+  <div class="evo-node" onclick="goToEvo(22)">EVO-22</div>
+  <div class="evo-node" onclick="goToEvo(23)">EVO-23</div>
+  <div class="evo-node" onclick="goToEvo(24)">EVO-24</div>
+  <div class="evo-node special" onclick="goToEvo(25)">EVO-25</div>
+  <div class="evo-node" onclick="goToEvo(26)">EVO-26</div>
+  <div class="evo-node" onclick="goToEvo(27)">EVO-27</div>
+  <div class="evo-node" onclick="goToEvo(28)">EVO-28</div>
+  <div class="evo-node" onclick="goToEvo(29)">EVO-29</div>
+  <div class="evo-node special" onclick="goToEvo(30)">EVO-30</div>
+  <div class="evo-node" onclick="goToEvo(31)">EVO-31</div>
+  <div class="evo-node" onclick="goToEvo(32)">EVO-32</div>
+  <div class="evo-node" onclick="goToEvo(33)">EVO-33</div>
+  <div class="evo-node" onclick="goToEvo(34)">EVO-34</div>
+  <div class="evo-node" onclick="goToEvo(35)">EVO-35</div>
+  <div class="evo-node" onclick="goToEvo(36)">EVO-36</div>
+  <div class="evo-node" onclick="goToEvo(37)">EVO-37</div>
+  <div class="evo-node" onclick="goToEvo(38)">EVO-38</div>
+  <div class="evo-node" onclick="goToEvo(39)">EVO-39</div>
+  <div class="evo-node special" onclick="goToEvo(40)">EVO-40</div>
+  <div class="evo-node" onclick="goToEvo(41)">EVO-41</div>
+  <div class="evo-node" onclick="goToEvo(42)">EVO-42</div>
+  <div class="evo-node" onclick="goToEvo(43)">EVO-43</div>
+  <div class="evo-node" onclick="goToEvo(44)">EVO-44</div>
+  <div class="evo-node" onclick="goToEvo(45)">EVO-45</div>
+  <div class="evo-node" onclick="goToEvo(46)">EVO-46</div>
+  <div class="evo-node" onclick="goToEvo(47)">EVO-47</div>
+  <div class="evo-node" onclick="goToEvo(48)">EVO-48</div>
+  <div class="evo-node" onclick="goToEvo(49)">EVO-49</div>
+  <div class="evo-node" onclick="goToEvo(50)">EVO-50</div>
+  <div class="evo-node" onclick="goToEvo(51)">EVO-51</div>
+  <div class="evo-node" onclick="goToEvo(52)">EVO-52</div>
+  <div class="evo-node special" onclick="goToEvo(53)">EVO-53</div>
 </div>
 
 <hr class="void">
@@ -498,13 +517,52 @@ Published March 15, 2026 · <a href="https://orion-public-research-site.vercel.a
 <p>© Orion Research Node · Built for transparent public work · Updated March 15, 2026</p>
 </footer>
 <script>
+// Phase mapping: EVO number -> phase number
+function evoToPhase(evo) {
+  if (evo <= 10) return 1;
+  if (evo <= 25) return 2;
+  if (evo <= 40) return 3;
+  return 4;
+}
+
+// EVO number -> entry ID (EVO-6 = entry-1, EVO-7 = entry-2, etc.)
+function evoToEntry(evo) {
+  return 'entry-' + (evo - 5);
+}
+
+function goToEvo(evo) {
+  var phase = evoToPhase(evo);
+  var entryId = evoToEntry(evo);
+
+  // Expand the target phase
+  var body = document.getElementById('body-' + phase);
+  var header = document.getElementById('phase-' + phase);
+  if (body) body.classList.remove('collapsed');
+  if (header) header.classList.remove('collapsed');
+
+  // Scroll to entry
+  var entry = document.getElementById(entryId);
+  if (entry) {
+    setTimeout(function() {
+      entry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Flash highlight
+      entry.classList.add('entry-highlight');
+      setTimeout(function() { entry.classList.remove('entry-highlight'); }, 1000);
+    }, 100);
+  }
+
+  // Highlight active EVO node
+  document.querySelectorAll('.evo-node').forEach(function(n) { n.classList.remove('active'); });
+  event.target.classList.add('active');
+}
+
 function togglePhase(n) {
   var body = document.getElementById('body-'+n);
   var header = document.getElementById('phase-'+n);
-  var arrow = document.getElementById('arrow-'+n);
   body.classList.toggle('collapsed');
   header.classList.toggle('collapsed');
 }
+
 function scrollToPhase(n) {
   var el = document.getElementById('phase-'+n);
   var body = document.getElementById('body-'+n);
@@ -512,14 +570,17 @@ function scrollToPhase(n) {
   document.getElementById('phase-'+n).classList.remove('collapsed');
   el.scrollIntoView({behavior:'smooth',block:'start'});
 }
+
 function expandAll() {
   document.querySelectorAll('.phase-body').forEach(function(b){b.classList.remove('collapsed')});
   document.querySelectorAll('.phase-header').forEach(function(h){h.classList.remove('collapsed')});
 }
+
 function collapseAll() {
   document.querySelectorAll('.phase-body').forEach(function(b){b.classList.add('collapsed')});
   document.querySelectorAll('.phase-header').forEach(function(h){h.classList.add('collapsed')});
 }
+
 // Start with phase 1 expanded, others collapsed
 document.addEventListener('DOMContentLoaded', function() {
   for (var i = 2; i <= 4; i++) {
@@ -528,7 +589,30 @@ document.addEventListener('DOMContentLoaded', function() {
     if (b) b.classList.add('collapsed');
     if (h) h.classList.add('collapsed');
   }
+
+  // Stagger EVO node glow animation
+  document.querySelectorAll('.evo-node').forEach(function(node, i) {
+    node.style.setProperty('--i', i);
+  });
+
+  // Intersection Observer for scroll-triggered fade-in
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.void-entry, .key-moment, .void-quote, .phi-box').forEach(function(el) {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  }
 });
 </script>
+<script type="module" src="/js/main.js"></script>
 </body>
 </html>

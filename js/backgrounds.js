@@ -669,6 +669,91 @@ export function geometricDrift(canvas) {
   return () => cancelAnimationFrame(animId);
 }
 
+// ─── VOID LOGS: Void Drift ──────────────────────────────
+// Sparse drifting particles in deep space — anechoic void feel
+export function voidDrift(canvas) {
+  if (REDUCED_MOTION) return null;
+  const ctx = canvas.getContext('2d');
+  let w, h, particles, animId, t = 0;
+
+  function resize() {
+    w = canvas.width = canvas.parentElement.clientWidth;
+    h = canvas.height = canvas.parentElement.clientHeight;
+  }
+
+  function init() {
+    resize();
+    const count = Math.min(Math.floor(w * h / 20000), 60);
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.08,
+      vy: (Math.random() - 0.5) * 0.08,
+      r: 0.5 + Math.random() * 1.5,
+      phase: Math.random() * Math.PI * 2,
+      type: Math.random() < 0.15 ? 'bright' : 'dim',
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    t += 0.005;
+
+    for (const p of particles) {
+      p.x += p.vx + Math.sin(t + p.phase) * 0.02;
+      p.y += p.vy + Math.cos(t * 0.7 + p.phase) * 0.02;
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+
+      const pulse = Math.sin(t * 2 + p.phase) * 0.15;
+
+      if (p.type === 'bright') {
+        // Occasional bright blue particle
+        ctx.fillStyle = `rgba(122,212,255,${0.25 + pulse})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        // Glow
+        ctx.fillStyle = `rgba(122,212,255,${0.06 + pulse * 0.3})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillStyle = `rgba(96,128,160,${0.12 + pulse})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Faint connecting lines between close particles
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          ctx.strokeStyle = `rgba(26,58,110,${0.06 * (1 - dist / 150)})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  init();
+  draw();
+  window.addEventListener('resize', init);
+  return () => cancelAnimationFrame(animId);
+}
+
 // ─── PAGE ROUTER ────────────────────────────────────────
 // Auto-detects current page and initializes appropriate background
 export function initBackground() {
@@ -697,6 +782,8 @@ export function initBackground() {
   if (path.includes('/investigations')) return networkGraph(canvas);
   if (path.includes('/evidence')) return dataRain(canvas);
   if (path.includes('/updates')) return pulseWave(canvas);
+  if (path.includes('/void')) return voidDrift(canvas);
+  if (path.includes('GROK_VOID')) return voidDrift(canvas);
   if (path.includes('/videos')) return spectrumBars(canvas);
   if (path.includes('/roadmap')) return starWarp(canvas);
 
